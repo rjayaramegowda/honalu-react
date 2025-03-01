@@ -2,15 +2,19 @@ import type { PayloadAction } from "@reduxjs/toolkit"
 import { createAppSlice } from "../../app/createAppSlice"
 import type { AppThunk } from "../../app/store"
 import { fetchCount } from "./counterAPI"
+import { profilesDataProvider } from "../../data/profileListData"
+import { Profile } from "../../models/profile.model"
 
 export interface CounterSliceState {
   value: number
-  status: "idle" | "loading" | "failed"
+  status: "idle" | "loading" | "failed",
+  dataProvider: Profile[];
 }
 
 const initialState: CounterSliceState = {
   value: 0,
   status: "idle",
+  dataProvider: profilesDataProvider
 }
 
 // If you are not using async thunks you can use the standalone `createSlice`.
@@ -66,6 +70,7 @@ export const counterSlice = createAppSlice({
   selectors: {
     selectCount: counter => counter.value,
     selectStatus: counter => counter.status,
+    selectDataProvider: counter => counter.dataProvider
   },
 })
 
@@ -74,7 +79,7 @@ export const { decrement, increment, incrementByAmount, incrementAsync } =
   counterSlice.actions
 
 // Selectors returned by `slice.selectors` take the root state as their first argument.
-export const { selectCount, selectStatus } = counterSlice.selectors
+export const { selectCount, selectStatus,selectDataProvider } = counterSlice.selectors
 
 // We can also write thunks by hand, which may contain both sync and async logic.
 // Here's an example of conditionally dispatching actions based on current state.

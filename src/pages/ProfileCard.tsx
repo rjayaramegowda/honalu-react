@@ -1,14 +1,21 @@
 import React from "react";
-import PropTypes from "prop-types";
+import PropTypes, { any, string } from "prop-types";
+import { Profile } from "../models/profile.model";
 
-ProfileCard.propTypes = {};
+ProfileCard.propTypes = {
+  vo: any,
+};
 
-function ProfileCard() {
+function ProfileCard(props: { vo: Profile | null | undefined }) {
   return (
     <div className="col-md-4">
       {/* Profile Begins*/}
       <div className="card text-bg-dark border-0 mb-4">
-        <img src="./images/users/img1.jpg" className="card-img" alt="..." />
+        <img
+          src={props.vo?.photo_details.photos[0].medium}
+          className="card-img"
+          alt="..."
+        />
         <div
           className="card-img-overlay pb-2"
           style={{
@@ -16,8 +23,13 @@ function ProfileCard() {
             top: "auto",
           }}
         >
-          <h5 className="card-title mt-5 pt-2">Shilpa G</h5>
-          <p className="card-text mb-1">38 Yrs, Not working, Mysuru, India</p>
+          <h5 className="card-title mt-5 pt-2">
+            {props.vo?.basic.display_name}
+          </h5>
+          <p className="card-text mb-1">
+            {props.vo?.basic.age} Yrs, {props.vo?.profession.occupation},{" "}
+            {props.vo?.location.location}
+          </p>
           <div className="text-center">
             <a
               href="profile.html"
