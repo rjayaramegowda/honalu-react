@@ -1,14 +1,23 @@
 import { ChangeEvent } from "react";
-import { useAppSelector } from "../app/hooks";
-import { selectDataProvider } from "../features/counter/counterSlice";
+import { useAppDispatch, useAppSelector } from "../app/hooks";
+import {
+  sortByAge,
+  selectDataProvider,
+} from "../features/counter/counterSlice";
 import { Profile } from "../models/profile.model";
 
 type Props = {};
 export const FilterList = ({}: Props) => {
+  const dispatch = useAppDispatch();
   const dataProvider = useAppSelector(selectDataProvider);
 
   function handleChange(e: ChangeEvent<HTMLSelectElement>): void {
     console.log(e.target.value);
+    const s1 = [...dataProvider];
+    s1.sort(
+      (a: Profile, b: Profile) => Number(a.basic.age) - Number(b.basic.age)
+    );
+    dispatch(sortByAge(s1));
   }
 
   return (
