@@ -1,5 +1,16 @@
+import { ChangeEvent } from "react";
+import { useAppSelector } from "../app/hooks";
+import { selectDataProvider } from "../features/counter/counterSlice";
+import { Profile } from "../models/profile.model";
+
 type Props = {};
 export const FilterList = ({}: Props) => {
+  const dataProvider = useAppSelector(selectDataProvider);
+
+  function handleChange(e: ChangeEvent<HTMLSelectElement>): void {
+    console.log(e.target.value);
+  }
+
   return (
     <div className="col-md-3 mb-3 bg-light p-3 d-none d-md-block">
       <div className="card mb-3">
@@ -9,10 +20,14 @@ export const FilterList = ({}: Props) => {
             <label htmlFor="inputState" className="form-label d-none">
               Sort By
             </label>
-            <select id="inputState" className="form-select">
+            <select
+              id="inputState"
+              onChange={(e) => handleChange(e)}
+              className="form-select"
+            >
               <option selected>Choose...</option>
-              <option>Age</option>
-              <option>Date Created</option>
+              <option value="age">Age</option>
+              <option value="date_created">Date Created</option>
             </select>
           </li>
         </ul>
