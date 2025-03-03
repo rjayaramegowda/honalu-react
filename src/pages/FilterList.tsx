@@ -13,11 +13,30 @@ export const FilterList = ({}: Props) => {
 
   function handleChange(e: ChangeEvent<HTMLSelectElement>): void {
     console.log(e.target.value);
-    const s1 = [...dataProvider];
-    s1.sort(
-      (a: Profile, b: Profile) => Number(a.basic.age) - Number(b.basic.age)
-    );
-    dispatch(sortByAge(s1));
+    switch (e.target.value) {
+      case "age":
+        dispatch(sortByAge(getSortedByAge([...dataProvider])));
+        break;
+
+      case "date_created":
+        dispatch(sortByAge(getSortedByProfileCreated([...dataProvider])));
+        break;
+
+      default:
+        break;
+    }
+  }
+
+  function getSortedByAge(s1: Profile[]) {
+    return s1.sort((a: Profile, b: Profile) => {
+      return Number(a.basic.age) - Number(b.basic.age);
+    });
+  }
+
+  function getSortedByProfileCreated(s1: Profile[]) {
+    return s1.sort((a: Profile, b: Profile) => {
+      return b.account.profile_created - a.account.profile_created;
+    });
   }
 
   return (
