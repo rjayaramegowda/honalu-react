@@ -5,13 +5,14 @@ import {
   selectDataProvider,
 } from "../features/counter/counterSlice";
 import { Profile } from "../models/profile.model";
+import { profilesDataProvider } from "../data/profileListData";
 
 type Props = {};
 export const FilterList = ({}: Props) => {
   const dispatch = useAppDispatch();
   const dataProvider = useAppSelector(selectDataProvider);
 
-  function handleChange(e: ChangeEvent<HTMLSelectElement>): void {
+  function handleSortBy(e: ChangeEvent<HTMLSelectElement>): void {
     console.log(e.target.value);
     switch (e.target.value) {
       case "age":
@@ -25,6 +26,16 @@ export const FilterList = ({}: Props) => {
       default:
         break;
     }
+  }
+
+  function filterByMaritalStatus(e: ChangeEvent<HTMLSelectElement>): void {
+    console.log(e.target.value);
+    const a1 = [...profilesDataProvider].filter((item) =>
+      e.target.value === "Doesn't Matter"
+        ? true
+        : item.basic.marital_status === e.target.value
+    );
+    dispatch(sortByAge(a1));
   }
 
   function getSortedByAge(s1: Profile[]) {
@@ -50,7 +61,7 @@ export const FilterList = ({}: Props) => {
             </label>
             <select
               id="inputState"
-              onChange={(e) => handleChange(e)}
+              onChange={(e) => handleSortBy(e)}
               className="form-select"
             >
               <option selected>Choose...</option>
@@ -126,12 +137,12 @@ export const FilterList = ({}: Props) => {
                 className="form-select"
                 id="floatingSelect"
                 aria-label="Marital Status"
+                onChange={(e) => filterByMaritalStatus(e)}
               >
                 <option selected>Doesn't Matter</option>
-                <option value={1}>Never Married</option>
-                <option value={2}>Divorced</option>
-                <option value={3}>Windowed</option>
-                <option value={4}>Others</option>
+                <option>Never Married</option>
+                <option>Divorced</option>
+                <option>Widowed</option>
               </select>
               <label htmlFor="floatingSelect">Marital Status </label>
             </div>
