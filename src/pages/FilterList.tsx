@@ -1,4 +1,4 @@
-import { ChangeEvent } from "react";
+import { ChangeEvent, useRef, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
 import {
   sortByAge,
@@ -11,6 +11,9 @@ type Props = {};
 export const FilterList = ({}: Props) => {
   const dispatch = useAppDispatch();
   const dataProvider = useAppSelector(selectDataProvider);
+
+  const maritalStatusRef = useRef("Doesn't Matter");
+  const cityRef = useRef("Doesn't Matter");
 
   function handleSortBy(e: ChangeEvent<HTMLSelectElement>): void {
     console.log(e.target.value);
@@ -29,13 +32,32 @@ export const FilterList = ({}: Props) => {
   }
 
   function filterByMaritalStatus(e: ChangeEvent<HTMLSelectElement>): void {
-    console.log(e.target.value);
-    const a1 = [...profilesDataProvider].filter((item) =>
-      e.target.value === "Doesn't Matter"
-        ? true
-        : item.basic.marital_status === e.target.value
-    );
+    maritalStatusRef.current = e.target.value;
+    const a1 = [...profilesDataProvider].filter(filterFunction);
     dispatch(sortByAge(a1));
+  }
+
+  function filterByCity(e: ChangeEvent<HTMLSelectElement>): void {
+    cityRef.current = e.target.value;
+    const a1 = [...profilesDataProvider].filter(filterFunction);
+    dispatch(sortByAge(a1));
+  }
+
+  function filterFunction(p: Profile) {
+    if (
+      p.basic.marital_status != maritalStatusRef.current &&
+      maritalStatusRef.current != "Doesn't Matter"
+    ) {
+      return false;
+    }
+
+    if (
+      p.location.city != cityRef.current &&
+      cityRef.current != "Doesn't Matter"
+    ) {
+      return false;
+    }
+    return true;
   }
 
   function getSortedByAge(s1: Profile[]) {
@@ -63,8 +85,11 @@ export const FilterList = ({}: Props) => {
               id="inputState"
               onChange={(e) => handleSortBy(e)}
               className="form-select"
+              defaultValue="choose"
             >
-              <option selected>Choose...</option>
+              <option value="choose" disabled={true}>
+                Choose
+              </option>
               <option value="age">Age</option>
               <option value="date_created">Date Created</option>
             </select>
@@ -78,10 +103,10 @@ export const FilterList = ({}: Props) => {
             <h6>Age</h6>
             <div className="row">
               <div className="col-auto">
-                <label className="visually-hidden" htmlFor="autoSizingSelect">
+                <label className="visually-hidden" htmlFor="ageSelect">
                   Preference
                 </label>
-                <select className="form-select" id="autoSizingSelect">
+                <select className="form-select" id="ageSelect">
                   <option value={1}>18</option>
                   <option value={2}>19</option>
                   <option value={3}>3</option>
@@ -89,10 +114,10 @@ export const FilterList = ({}: Props) => {
               </div>
               <div className="col-auto align-self-center">to</div>
               <div className="col-auto">
-                <label className="visually-hidden" htmlFor="autoSizingSelect">
+                <label className="visually-hidden" htmlFor="autoSizingSelect1">
                   Preference
                 </label>
-                <select className="form-select" id="autoSizingSelect">
+                <select className="form-select" id="autoSizingSelect1">
                   <option value={1}>24</option>
                   <option value={2}>19</option>
                   <option value={3}>3</option>
@@ -104,10 +129,10 @@ export const FilterList = ({}: Props) => {
             <h6>Height</h6>
             <div className="row">
               <div className="col-auto">
-                <label className="visually-hidden" htmlFor="autoSizingSelect">
+                <label className="visually-hidden" htmlFor="autoSizingSelect2">
                   Preference
                 </label>
-                <select className="form-select" id="autoSizingSelect">
+                <select className="form-select" id="autoSizingSelect2">
                   <option value={1}>140 cm</option>
                   <option value={2}>141 cm</option>
                   <option value={3}>142 cm</option>
@@ -120,10 +145,10 @@ export const FilterList = ({}: Props) => {
                 to
               </div>
               <div className="col-auto">
-                <label className="visually-hidden" htmlFor="autoSizingSelect">
+                <label className="visually-hidden" htmlFor="autoSizingSelect3">
                   Preference
                 </label>
-                <select className="form-select" id="autoSizingSelect">
+                <select className="form-select" id="autoSizingSelect3">
                   <option value={1}>160 cm</option>
                   <option value={2}>161 cm</option>
                   <option value={3}>162</option>
@@ -138,13 +163,14 @@ export const FilterList = ({}: Props) => {
                 id="floatingSelect"
                 aria-label="Marital Status"
                 onChange={(e) => filterByMaritalStatus(e)}
+                defaultValue="Doesn't Matter"
               >
-                <option selected>Doesn't Matter</option>
+                <option>Doesn't Matter</option>
                 <option>Never Married</option>
                 <option>Divorced</option>
                 <option>Widowed</option>
               </select>
-              <label htmlFor="floatingSelect">Marital Status </label>
+              <label htmlFor="floatingSelect">Marital Status</label>
             </div>
           </li>
           <li className="list-group-item">
@@ -153,8 +179,9 @@ export const FilterList = ({}: Props) => {
                 className="form-select"
                 id="floatingSelect"
                 aria-label="Marital Status"
+                defaultValue="Doesn't Matter"
               >
-                <option selected>Doesn't Matter</option>
+                <option value="Doesn't Matter">Doesn't Matter</option>
                 <option value={1}>Hindu</option>
                 <option value={2}>Christian</option>
                 <option value={3}>Muslim</option>
@@ -170,13 +197,14 @@ export const FilterList = ({}: Props) => {
                 className="form-select"
                 id="floatingSelect"
                 aria-label="Marital Status"
+                defaultValue="Doesn't Matter"
               >
-                <option selected>Doesn't Matter</option>
-                <option value={1}>Kannada</option>
-                <option value={2}>Hindi</option>
-                <option value={3}>Tamil</option>
-                <option value={3}>Telugu</option>
-                <option value={3}>Others</option>
+                <option value="Doesn't Matter">Doesn't Matter</option>
+                <option value="Kannada">Kannada</option>
+                <option value="Hindi">Hindi</option>
+                <option value="Tamil">Tamil</option>
+                <option value="Telugu">Telugu</option>
+                <option value="Others">Others</option>
               </select>
               <label htmlFor="floatingSelect">Mother Tongue</label>
             </div>
@@ -187,13 +215,31 @@ export const FilterList = ({}: Props) => {
                 className="form-select"
                 id="floatingSelect"
                 aria-label="Religion"
+                defaultValue="Doesn't Matter"
               >
-                <option selected>Doesn't Matter</option>
+                <option value="Doesn't Matter">Doesn't Matter</option>
                 <option value={1}>India</option>
                 <option value={2}>Germany</option>
                 <option value={3}>Oman</option>
               </select>
-              <label htmlFor="floatingSelect">Country Living In </label>
+              <label htmlFor="countrySelect">Country Living In </label>
+            </div>
+          </li>
+          <li className="list-group-item">
+            <div className="form-floating">
+              <select
+                className="form-select"
+                id="citySelect"
+                aria-label="Religion"
+                defaultValue="Doesn't Matter"
+                onChange={(e) => filterByCity(e)}
+              >
+                <option value="Doesn't Matter">Doesn't Matter</option>
+                <option>Bengaluru</option>
+                <option>Mysuru</option>
+                <option>Ramdurg</option>
+              </select>
+              <label htmlFor="citySelect">City </label>
             </div>
           </li>
           <li className="list-group-item">

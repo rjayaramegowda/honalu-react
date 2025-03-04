@@ -27,7 +27,7 @@ function ProfileCard(props: { vo: Profile | null | undefined }) {
             {props.vo?.basic.display_name}
           </h5>
           <p className="card-text mb-1">
-            {props.vo?.basic.age} Yrs, {props.vo?.profession.occupation},{" "}
+            {props.vo?.basic.age} Yrs, {props.vo?.basic.marital_status},{" "}
             {props.vo?.location.location}
           </p>
           <div className="text-center">
