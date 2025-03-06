@@ -126,37 +126,6 @@ export const FilterList = ({}: Props) => {
             </div>
           </li>
           <li className="list-group-item">
-            <h6>Height</h6>
-            <div className="row">
-              <div className="col-auto">
-                <label className="visually-hidden" htmlFor="autoSizingSelect2">
-                  Preference
-                </label>
-                <select className="form-select" id="autoSizingSelect2">
-                  <option value={1}>140 cm</option>
-                  <option value={2}>141 cm</option>
-                  <option value={3}>142 cm</option>
-                </select>
-              </div>
-              <div
-                className="col-auto align-self-center"
-                style={{ padding: "0" }}
-              >
-                to
-              </div>
-              <div className="col-auto">
-                <label className="visually-hidden" htmlFor="autoSizingSelect3">
-                  Preference
-                </label>
-                <select className="form-select" id="autoSizingSelect3">
-                  <option value={1}>160 cm</option>
-                  <option value={2}>161 cm</option>
-                  <option value={3}>162</option>
-                </select>
-              </div>
-            </div>
-          </li>
-          <li className="list-group-item">
             <div className="form-floating">
               <select
                 className="form-select"
