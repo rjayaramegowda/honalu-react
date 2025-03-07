@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes, { any, string } from "prop-types";
 import { Profile } from "../models/profile.model";
 
@@ -27,7 +27,8 @@ function ProfileCard(props: { vo: Profile | null | undefined }) {
             {props.vo?.basic.display_name}
           </h5>
           <p className="card-text mb-1">
-            {props.vo?.basic.age} Yrs, {props.vo?.basic.marital_status},{" "}
+            {props.vo?.basic.age} Yrs, {props.vo?.doctrine.religion},{" "}
+            {props.vo?.doctrine.caste}, <br />
             {props.vo?.location.location}
           </p>
           <div className="text-center">
