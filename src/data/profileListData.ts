@@ -1303,7 +1303,7 @@ export const profilesDataProvider: Profile[] = [
         living_since: "",
         city: "Tukwila",
         locality: "Tukwila",
-        location: "Tukwila",
+        location: "Tukwila, USA",
         lives_in: "Lives in Tukwila, USA"
       },
       education: {
@@ -1499,7 +1499,7 @@ export const profilesDataProvider: Profile[] = [
         living_since: "",
         city: "Sebring",
         locality: "",
-        location: "Sebring",
+        location: "Sebring, USA",
         lives_in: "Lives in Sebring, USA"
       },
       education: {
@@ -1695,7 +1695,7 @@ export const profilesDataProvider: Profile[] = [
         living_since: "",
         city: "Dallas",
         locality: "",
-        location: "Dallas",
+        location: "Dallas, USA",
         lives_in: "Lives in Dallas,USA"
       },
       education: {
