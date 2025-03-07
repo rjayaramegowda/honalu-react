@@ -24,13 +24,13 @@ export const profilesDataProvider: Profile[] = [
         first_name: "SH39542335",
         last_name: "SH39542335",
         gender: "Female",
-        age: "39",
+        age: "26",
         marital_status: "Never Married",
         date_of_birth: 0
       },
       trait: {
         personal_values: "",
-        about_me: "Hello, here is a little bit about my daughter\r\nShe has completed B.A. she is focused about her career, but makes it a point to give equal attention to family as well. life-partner to be good-natured with a modest upbringing and most importantly one who respects the institution of marriage.",
+        about_me: "My Daughter is a Smart and Dynamic Girl Brought Up with Well Nurtured Values. She is Very Humble and Currently Living in...",
         personality: []
       },
       health_info: {
@@ -51,9 +51,9 @@ export const profilesDataProvider: Profile[] = [
       },
       doctrine: {
         religion: "Hindu",
-        caste: "Adi Karnataka",
+        caste: "Other",
         sub_caste: "-",
-        mother_tongue: "Kannada",
+        mother_tongue: "Malayalam",
         gotra: "-",
         amritdhari: "",
         dastar: "",
@@ -66,18 +66,18 @@ export const profilesDataProvider: Profile[] = [
         caste_no_bar: ""
       },
       location: {
-        country: "India",
-        state: "Karnataka",
-        district: "Bengaluru / Bangalore",
+        country: "USA",
+        state: "",
+        district: " Nashville",
         residency_status: "Citizen",
         zip_code: "",
         country_code: "",
         city_google: "",
         living_since: "",
-        city: "Bengaluru",
+        city: "Nashville",
         locality: "0",
-        location: "Bengaluru, Karnataka",
-        lives_in: "Lives in Bengaluru, Karnataka, India"
+        location: "Nashville",
+        lives_in: "Lives in Nashville, USA"
       },
       education: {
         education: "B.A",
@@ -1181,6 +1181,594 @@ export const profilesDataProvider: Profile[] = [
             photo_order: 0,
             profile_photo: true,
             medium: "./images/users/img6.jpg",
+            medium_nb: "/2025/01/25/hSH05500675-1737812402479547441-Female.jpg",
+            semilarge: "/2025/01/25/hSH05500675-4974287015065127079-Female_YLHXONZ5L1BpoK01_250X310.jpg",
+            semilarge_nb: "/2025/01/25/hSH05500675-4974287015065127079-Female_YLHXONZ5L1BpoK01_250X310.jpg",
+            small: "/2025/01/25/hSH05500675-0843066806009963042-Female_TQDWrCkU0FNmrMc1_60X60.jpg",
+            small_nb: "/2025/01/25/hSH05500675-0843066806009963042-Female_TQDWrCkU0FNmrMc1_60X60.jpg",
+            domain_name: "https://img3.honalu.com",
+            domain_name_nb: "https://img3.honalu.com"
+          }
+        ],
+        status: "show_photo"
+      },
+      connect: {
+        type: "connect",
+        accepted_date: "",
+        accepted_viewed_date: "",
+        viewed: "Y",
+        temp: "0SH82206555hSH05500675",
+        status: "Declined",
+        record_date: 20250202200711,
+        filtered: "N",
+        viewed_date: 20250202201052,
+        deleted_by_to: 0,
+        deleted_by_from: 0,
+        status_updated_date: 20250202201100,
+        from: "0SH82206555",
+        to: "hSH05500675",
+        accept_viewed: "Y",
+        can_cancel: "N",
+        can_unblock: "N",
+        connect_status: "profile_declined"
+      },
+      other: {
+        se: "82778ee6652191f29b6577f24f6c9152",
+        is_name_lock: "Y",
+        mask_new_profile: false
+      },
+      notifications: {
+        from: "hSH05500675",
+        to: "0SH82206555",
+        notification_type: "contacts_contacted_viewed",
+        viewed: "Y",
+        pushed: "N",
+        record_date: 20250202201052,
+        update_date: 20250202
+      },
+      request: {}
+    },    
+    {
+      account: {
+        status: "Active",
+        last_login_date: 20250224105422,
+        profile_created: 20250125183031,
+        profile_activated: 20250125184533,
+        posted_by: "Self",
+        membership: [
+          "Free Member"
+        ],
+        hide_till: 0,
+        screened: "Y",
+        hidden: "N",
+        astro_profile: "N",
+        memberlogin: "hSH05500675",
+        membership_tag: "free"
+      },
+      basic: {
+        username: "SH05500675",
+        display_name: "Mahreen",
+        first_name: "Mahreen",
+        last_name: "D",
+        gender: "Female",
+        age: "27",
+        marital_status: "Never Married",
+        date_of_birth: 0
+      },
+      trait: {
+        personal_values: "",
+        about_me: "I am a simple girl with a good personality. I reside in a beautiful city of usa and my caste is ansari...",
+        personality: []
+      },
+      health_info: {
+        special_cases: "None",
+        blood_group: "",
+        ailments: ""
+      },
+      appearance: {
+        complexion: "",
+        built: "",
+        height: 60,
+        weight: ""
+      },
+      lifestyle: {
+        diet: "Non-Veg",
+        drink: "No",
+        smoke: "No"
+      },
+      doctrine: {
+        religion: "Muslim",
+        caste: "Ansari",
+        sub_caste: "",
+        mother_tongue: "Telugu",
+        gotra: "",
+        amritdhari: "",
+        dastar: "",
+        fasting: "",
+        keshdhari: "",
+        muslim_from_birth: "",
+        namaaz: "",
+        religious_values: "",
+        zakaat: "",
+        caste_no_bar: ""
+      },
+      location: {
+        country: "USA",
+        state: "",
+        district: "Tukwila",
+        residency_status: "Citizen",
+        zip_code: "",
+        country_code: "",
+        city_google: "",
+        living_since: "",
+        city: "Tukwila",
+        locality: "Tukwila",
+        location: "Tukwila",
+        lives_in: "Lives in Tukwila, USA"
+      },
+      education: {
+        education: "B.Sc",
+        display_education: "B.Sc - Bachelor of Science",
+        education_stream: "Science",
+        college_university: "",
+        college_1: "",
+        valid_college_1: "Yes",
+        college_2: "",
+        valid_college_2: ""
+      },
+      profession: {
+        occupation: "Admin Professional",
+        industry: "Administration & HR",
+        working_with: "Government / Public Sector",
+        income_old: "",
+        income: "INR 1 Lakh to 2 Lakh",
+        income_currency: "INR",
+        linkedin_employerid: 0,
+        employer: "",
+        valid_employer: "",
+        income_hidden: ""
+      },
+      family: {
+        children: "No",
+        cultural_values: "",
+        about: "",
+        father_profession: "Passed Away",
+        mother_profession: "Homemaker",
+        brothers: "0",
+        brothers_married: "0",
+        sisters: "0",
+        sisters_married: "0",
+        affluence: "Lower Middle Class",
+        no_of_kids: "0",
+        type: "",
+        located: "",
+        father_employer: "",
+        father_designation: "",
+        about_father: "",
+        mother_employer: "",
+        mother_designation: "",
+        about_mother: "",
+        family_income: "",
+        is_family_gamified: "Y"
+      },
+      origin: {
+        grewup_in: [
+          "India"
+        ],
+        native_place: ", Karnataka, India",
+        ethnicity: "India"
+      },
+      interests_and_more: {
+        hobbies: [],
+        interests: [],
+        cuisine: [],
+        music: [],
+        movies: [],
+        reads: [],
+        sports: [],
+        dress_style: [],
+        can_speak: []
+      },
+      photo_details: {
+        count: 1,
+        photos: [
+          {
+            status: "Y",
+            photo_order: 0,
+            profile_photo: true,
+            medium: "./images/users/img9.jpg",
+            medium_nb: "/2025/01/25/hSH05500675-1737812402479547441-Female.jpg",
+            semilarge: "/2025/01/25/hSH05500675-4974287015065127079-Female_YLHXONZ5L1BpoK01_250X310.jpg",
+            semilarge_nb: "/2025/01/25/hSH05500675-4974287015065127079-Female_YLHXONZ5L1BpoK01_250X310.jpg",
+            small: "/2025/01/25/hSH05500675-0843066806009963042-Female_TQDWrCkU0FNmrMc1_60X60.jpg",
+            small_nb: "/2025/01/25/hSH05500675-0843066806009963042-Female_TQDWrCkU0FNmrMc1_60X60.jpg",
+            domain_name: "https://img3.honalu.com",
+            domain_name_nb: "https://img3.honalu.com"
+          }
+        ],
+        status: "show_photo"
+      },
+      connect: {
+        type: "connect",
+        accepted_date: "",
+        accepted_viewed_date: "",
+        viewed: "Y",
+        temp: "0SH82206555hSH05500675",
+        status: "Declined",
+        record_date: 20250202200711,
+        filtered: "N",
+        viewed_date: 20250202201052,
+        deleted_by_to: 0,
+        deleted_by_from: 0,
+        status_updated_date: 20250202201100,
+        from: "0SH82206555",
+        to: "hSH05500675",
+        accept_viewed: "Y",
+        can_cancel: "N",
+        can_unblock: "N",
+        connect_status: "profile_declined"
+      },
+      other: {
+        se: "82778ee6652191f29b6577f24f6c9152",
+        is_name_lock: "Y",
+        mask_new_profile: false
+      },
+      notifications: {
+        from: "hSH05500675",
+        to: "0SH82206555",
+        notification_type: "contacts_contacted_viewed",
+        viewed: "Y",
+        pushed: "N",
+        record_date: 20250202201052,
+        update_date: 20250202
+      },
+      request: {}
+    },    
+    {
+      account: {
+        status: "Active",
+        last_login_date: 20250224105422,
+        profile_created: 20250125183031,
+        profile_activated: 20250125184533,
+        posted_by: "Self",
+        membership: [
+          "Free Member"
+        ],
+        hide_till: 0,
+        screened: "Y",
+        hidden: "N",
+        astro_profile: "N",
+        memberlogin: "hSH05500675",
+        membership_tag: "free"
+      },
+      basic: {
+        username: "SH05500675",
+        display_name: "Carmel",
+        first_name: "Carmel",
+        last_name: "B",
+        gender: "Female",
+        age: "24",
+        marital_status: "Never Married",
+        date_of_birth: 0
+      },
+      trait: {
+        personal_values: "",
+        about_me: "Here are some things that would help you know me better. In terms of education, I have completed my Bachelors in Science from a renowned institution.I have a flexible, open-minded and progressive mindset. I seek a compatible life partner, someone who is understanding and has good values. If you wish to take things ahead, please feel free to communicate.",
+        personality: []
+      },
+      health_info: {
+        special_cases: "None",
+        blood_group: "",
+        ailments: ""
+      },
+      appearance: {
+        complexion: "",
+        built: "",
+        height: 60,
+        weight: ""
+      },
+      lifestyle: {
+        diet: "Non-Veg",
+        drink: "No",
+        smoke: "No"
+      },
+      doctrine: {
+        religion: "Christian",
+        caste: "Born Again",
+        sub_caste: "",
+        mother_tongue: "Malayalam",
+        gotra: "",
+        amritdhari: "",
+        dastar: "",
+        fasting: "",
+        keshdhari: "",
+        muslim_from_birth: "",
+        namaaz: "",
+        religious_values: "",
+        zakaat: "",
+        caste_no_bar: ""
+      },
+      location: {
+        country: "USA",
+        state: "",
+        district: "",
+        residency_status: "Citizen",
+        zip_code: "",
+        country_code: "",
+        city_google: "",
+        living_since: "",
+        city: "Sebring",
+        locality: "",
+        location: "Sebring",
+        lives_in: "Lives in Sebring, USA"
+      },
+      education: {
+        education: "B.Sc",
+        display_education: "B.Sc - Bachelor of Science",
+        education_stream: "Science",
+        college_university: "",
+        college_1: "",
+        valid_college_1: "Yes",
+        college_2: "",
+        valid_college_2: ""
+      },
+      profession: {
+        occupation: "Admin Professional",
+        industry: "Administration & HR",
+        working_with: "Government / Public Sector",
+        income_old: "",
+        income: "INR 1 Lakh to 2 Lakh",
+        income_currency: "INR",
+        linkedin_employerid: 0,
+        employer: "",
+        valid_employer: "",
+        income_hidden: ""
+      },
+      family: {
+        children: "No",
+        cultural_values: "",
+        about: "",
+        father_profession: "Passed Away",
+        mother_profession: "Homemaker",
+        brothers: "0",
+        brothers_married: "0",
+        sisters: "0",
+        sisters_married: "0",
+        affluence: "Lower Middle Class",
+        no_of_kids: "0",
+        type: "",
+        located: "",
+        father_employer: "",
+        father_designation: "",
+        about_father: "",
+        mother_employer: "",
+        mother_designation: "",
+        about_mother: "",
+        family_income: "",
+        is_family_gamified: "Y"
+      },
+      origin: {
+        grewup_in: [
+          "USA"
+        ],
+        native_place: "Kerala, India",
+        ethnicity: "India"
+      },
+      interests_and_more: {
+        hobbies: [],
+        interests: [],
+        cuisine: [],
+        music: [],
+        movies: [],
+        reads: [],
+        sports: [],
+        dress_style: [],
+        can_speak: []
+      },
+      photo_details: {
+        count: 1,
+        photos: [
+          {
+            status: "Y",
+            photo_order: 0,
+            profile_photo: true,
+            medium: "./images/users/img10.jpg",
+            medium_nb: "/2025/01/25/hSH05500675-1737812402479547441-Female.jpg",
+            semilarge: "/2025/01/25/hSH05500675-4974287015065127079-Female_YLHXONZ5L1BpoK01_250X310.jpg",
+            semilarge_nb: "/2025/01/25/hSH05500675-4974287015065127079-Female_YLHXONZ5L1BpoK01_250X310.jpg",
+            small: "/2025/01/25/hSH05500675-0843066806009963042-Female_TQDWrCkU0FNmrMc1_60X60.jpg",
+            small_nb: "/2025/01/25/hSH05500675-0843066806009963042-Female_TQDWrCkU0FNmrMc1_60X60.jpg",
+            domain_name: "https://img3.honalu.com",
+            domain_name_nb: "https://img3.honalu.com"
+          }
+        ],
+        status: "show_photo"
+      },
+      connect: {
+        type: "connect",
+        accepted_date: "",
+        accepted_viewed_date: "",
+        viewed: "Y",
+        temp: "0SH82206555hSH05500675",
+        status: "Declined",
+        record_date: 20250202200711,
+        filtered: "N",
+        viewed_date: 20250202201052,
+        deleted_by_to: 0,
+        deleted_by_from: 0,
+        status_updated_date: 20250202201100,
+        from: "0SH82206555",
+        to: "hSH05500675",
+        accept_viewed: "Y",
+        can_cancel: "N",
+        can_unblock: "N",
+        connect_status: "profile_declined"
+      },
+      other: {
+        se: "82778ee6652191f29b6577f24f6c9152",
+        is_name_lock: "Y",
+        mask_new_profile: false
+      },
+      notifications: {
+        from: "hSH05500675",
+        to: "0SH82206555",
+        notification_type: "contacts_contacted_viewed",
+        viewed: "Y",
+        pushed: "N",
+        record_date: 20250202201052,
+        update_date: 20250202
+      },
+      request: {}
+    },    
+    {
+      account: {
+        status: "Active",
+        last_login_date: 20250224105422,
+        profile_created: 20250125183031,
+        profile_activated: 20250125184533,
+        posted_by: "Self",
+        membership: [
+          "Free Member"
+        ],
+        hide_till: 0,
+        screened: "Y",
+        hidden: "N",
+        astro_profile: "N",
+        memberlogin: "hSH05500675",
+        membership_tag: "free"
+      },
+      basic: {
+        username: "SH05500675",
+        display_name: "Lydia",
+        first_name: "Lydia",
+        last_name: "R",
+        gender: "Female",
+        age: "27",
+        marital_status: "Never Married",
+        date_of_birth: 0
+      },
+      trait: {
+        personal_values: "",
+        about_me: "This profile is of my Daughter who is simple and good looking. Our mother tongue is malayalam and caste is born again.S...",
+        personality: []
+      },
+      health_info: {
+        special_cases: "None",
+        blood_group: "",
+        ailments: ""
+      },
+      appearance: {
+        complexion: "",
+        built: "",
+        height: 60,
+        weight: ""
+      },
+      lifestyle: {
+        diet: "Non-Veg",
+        drink: "No",
+        smoke: "No"
+      },
+      doctrine: {
+        religion: "Christian",
+        caste: "Catholic",
+        sub_caste: "",
+        mother_tongue: "Marathi",
+        gotra: "",
+        amritdhari: "",
+        dastar: "",
+        fasting: "",
+        keshdhari: "",
+        muslim_from_birth: "",
+        namaaz: "",
+        religious_values: "",
+        zakaat: "",
+        caste_no_bar: ""
+      },
+      location: {
+        country: "USA",
+        state: "",
+        district: "Dallas",
+        residency_status: "Citizen",
+        zip_code: "",
+        country_code: "",
+        city_google: "",
+        living_since: "",
+        city: "Dallas",
+        locality: "",
+        location: "Dallas",
+        lives_in: "Lives in Dallas,USA"
+      },
+      education: {
+        education: "B.Sc",
+        display_education: "B.Sc - Bachelor of Science",
+        education_stream: "Science",
+        college_university: "",
+        college_1: "",
+        valid_college_1: "Yes",
+        college_2: "",
+        valid_college_2: ""
+      },
+      profession: {
+        occupation: "Admin Professional",
+        industry: "Administration & HR",
+        working_with: "Government / Public Sector",
+        income_old: "",
+        income: "INR 1 Lakh to 2 Lakh",
+        income_currency: "INR",
+        linkedin_employerid: 0,
+        employer: "",
+        valid_employer: "",
+        income_hidden: ""
+      },
+      family: {
+        children: "No",
+        cultural_values: "",
+        about: "",
+        father_profession: "Passed Away",
+        mother_profession: "Homemaker",
+        brothers: "0",
+        brothers_married: "0",
+        sisters: "0",
+        sisters_married: "0",
+        affluence: "Lower Middle Class",
+        no_of_kids: "0",
+        type: "",
+        located: "",
+        father_employer: "",
+        father_designation: "",
+        about_father: "",
+        mother_employer: "",
+        mother_designation: "",
+        about_mother: "",
+        family_income: "",
+        is_family_gamified: "Y"
+      },
+      origin: {
+        grewup_in: [
+          "India"
+        ],
+        native_place: ", Karnataka, India",
+        ethnicity: "India"
+      },
+      interests_and_more: {
+        hobbies: [],
+        interests: [],
+        cuisine: [],
+        music: [],
+        movies: [],
+        reads: [],
+        sports: [],
+        dress_style: [],
+        can_speak: []
+      },
+      photo_details: {
+        count: 1,
+        photos: [
+          {
+            status: "Y",
+            photo_order: 0,
+            profile_photo: true,
+            medium: "./images/users/img11.jpg",
             medium_nb: "/2025/01/25/hSH05500675-1737812402479547441-Female.jpg",
             semilarge: "/2025/01/25/hSH05500675-4974287015065127079-Female_YLHXONZ5L1BpoK01_250X310.jpg",
             semilarge_nb: "/2025/01/25/hSH05500675-4974287015065127079-Female_YLHXONZ5L1BpoK01_250X310.jpg",
