@@ -28,7 +28,8 @@ function ProfileCard(props: { vo: Profile | null | undefined }) {
           </h5>
           <p className="card-text mb-1">
             {props.vo?.basic.age} Yrs, {props.vo?.doctrine.religion},{" "}
-            {props.vo?.doctrine.caste}, <br />
+            {props.vo?.doctrine.caste}, {props.vo?.doctrine.mother_tongue},{" "}
+            <br />
             {props.vo?.location.location}
           </p>
           <div className="text-center">
