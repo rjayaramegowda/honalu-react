@@ -19,6 +19,9 @@ export const FilterList = ({}: Props) => {
   const motherTongueRef = useRef("Doesn't Matter");
   const countryRef = useRef("Doesn't Matter");
 
+  const [minAge, setMinAge] = useState(20);
+  const [maxAge, setMaxAge] = useState(50);
+
   function handleSortBy(e: ChangeEvent<HTMLSelectElement>): void {
     console.log(e.target.value);
     switch (e.target.value) {
@@ -37,41 +40,43 @@ export const FilterList = ({}: Props) => {
 
   function filterByMaritalStatus(e: ChangeEvent<HTMLSelectElement>): void {
     maritalStatusRef.current = e.target.value;
-    const a1 = [...profilesDataProvider].filter(filterFunction);
-    dispatch(sortByAge(a1));
+    applyFilter();
   }
 
   function filterByReligion(e: ChangeEvent<HTMLSelectElement>): void {
     religionRef.current = e.target.value;
-    const a1 = [...profilesDataProvider].filter(filterFunction);
-    dispatch(sortByAge(a1));
+    applyFilter();
   }
 
   function filterByCaste(e: ChangeEvent<HTMLSelectElement>): void {
     casteRef.current = e.target.value;
-    const a1 = [...profilesDataProvider].filter(filterFunction);
-    dispatch(sortByAge(a1));
+    applyFilter();
   }
 
   function filterByMotherTongue(e: ChangeEvent<HTMLSelectElement>): void {
     motherTongueRef.current = e.target.value;
-    const a1 = [...profilesDataProvider].filter(filterFunction);
-    dispatch(sortByAge(a1));
+    applyFilter();
   }
 
   function filterByCountry(e: ChangeEvent<HTMLSelectElement>): void {
     countryRef.current = e.target.value;
-    const a1 = [...profilesDataProvider].filter(filterFunction);
-    dispatch(sortByAge(a1));
+    applyFilter();
   }
 
   function filterByCity(e: ChangeEvent<HTMLSelectElement>): void {
     cityRef.current = e.target.value;
+    applyFilter();
+  }
+
+  function applyFilter() {
     const a1 = [...profilesDataProvider].filter(filterFunction);
     dispatch(sortByAge(a1));
   }
 
   function filterFunction(p: Profile) {
+    if (Number(p.basic.age) < minAge || Number(p.basic.age) > maxAge) {
+      return false;
+    }
     if (
       p.basic.marital_status != maritalStatusRef.current &&
       maritalStatusRef.current != "Doesn't Matter"
@@ -160,25 +165,31 @@ export const FilterList = ({}: Props) => {
             <h6>Age</h6>
             <div className="row">
               <div className="col-auto">
-                <label className="visually-hidden" htmlFor="ageSelect">
-                  Preference
-                </label>
-                <select className="form-select" id="ageSelect">
-                  <option value={1}>18</option>
-                  <option value={2}>19</option>
-                  <option value={3}>3</option>
-                </select>
+                <input
+                  className="form-control"
+                  type="number"
+                  id="minAgeIT"
+                  name="minAge"
+                  min="18"
+                  max="50"
+                  value={minAge}
+                  onChange={(e) => setMinAge(Number(e.target.value))}
+                  onBlur={applyFilter}
+                />
               </div>
               <div className="col-auto align-self-center">to</div>
               <div className="col-auto">
-                <label className="visually-hidden" htmlFor="autoSizingSelect1">
-                  Preference
-                </label>
-                <select className="form-select" id="autoSizingSelect1">
-                  <option value={1}>24</option>
-                  <option value={2}>19</option>
-                  <option value={3}>3</option>
-                </select>
+                <input
+                  className="form-control"
+                  type="number"
+                  id="maxAgeIT"
+                  name="maxAge"
+                  min="18"
+                  max="60"
+                  value={maxAge}
+                  onChange={(e) => setMaxAge(Number(e.target.value))}
+                  onBlur={applyFilter}
+                />
               </div>
             </div>
           </li>
