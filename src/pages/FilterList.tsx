@@ -14,6 +14,10 @@ export const FilterList = ({}: Props) => {
 
   const maritalStatusRef = useRef("Doesn't Matter");
   const cityRef = useRef("Doesn't Matter");
+  const religionRef = useRef("Doesn't Matter");
+  const casteRef = useRef("Doesn't Matter");
+  const motherTongueRef = useRef("Doesn't Matter");
+  const countryRef = useRef("Doesn't Matter");
 
   function handleSortBy(e: ChangeEvent<HTMLSelectElement>): void {
     console.log(e.target.value);
@@ -37,6 +41,30 @@ export const FilterList = ({}: Props) => {
     dispatch(sortByAge(a1));
   }
 
+  function filterByReligion(e: ChangeEvent<HTMLSelectElement>): void {
+    religionRef.current = e.target.value;
+    const a1 = [...profilesDataProvider].filter(filterFunction);
+    dispatch(sortByAge(a1));
+  }
+
+  function filterByCaste(e: ChangeEvent<HTMLSelectElement>): void {
+    casteRef.current = e.target.value;
+    const a1 = [...profilesDataProvider].filter(filterFunction);
+    dispatch(sortByAge(a1));
+  }
+
+  function filterByMotherTongue(e: ChangeEvent<HTMLSelectElement>): void {
+    motherTongueRef.current = e.target.value;
+    const a1 = [...profilesDataProvider].filter(filterFunction);
+    dispatch(sortByAge(a1));
+  }
+
+  function filterByCountry(e: ChangeEvent<HTMLSelectElement>): void {
+    countryRef.current = e.target.value;
+    const a1 = [...profilesDataProvider].filter(filterFunction);
+    dispatch(sortByAge(a1));
+  }
+
   function filterByCity(e: ChangeEvent<HTMLSelectElement>): void {
     cityRef.current = e.target.value;
     const a1 = [...profilesDataProvider].filter(filterFunction);
@@ -52,11 +80,40 @@ export const FilterList = ({}: Props) => {
     }
 
     if (
+      p.doctrine.religion != religionRef.current &&
+      religionRef.current != "Doesn't Matter"
+    ) {
+      return false;
+    }
+
+    if (
+      p.doctrine.caste != casteRef.current &&
+      casteRef.current != "Doesn't Matter"
+    ) {
+      return false;
+    }
+
+    if (
+      p.doctrine.mother_tongue != motherTongueRef.current &&
+      motherTongueRef.current != "Doesn't Matter"
+    ) {
+      return false;
+    }
+
+    if (
+      p.location.country != countryRef.current &&
+      countryRef.current != "Doesn't Matter"
+    ) {
+      return false;
+    }
+
+    if (
       p.location.city != cityRef.current &&
       cityRef.current != "Doesn't Matter"
     ) {
       return false;
     }
+
     return true;
   }
 
@@ -129,7 +186,7 @@ export const FilterList = ({}: Props) => {
             <div className="form-floating">
               <select
                 className="form-select"
-                id="floatingSelect"
+                id="maritalStatusSelect"
                 aria-label="Marital Status"
                 onChange={(e) => filterByMaritalStatus(e)}
                 defaultValue="Doesn't Matter"
@@ -139,57 +196,78 @@ export const FilterList = ({}: Props) => {
                 <option>Divorced</option>
                 <option>Widowed</option>
               </select>
-              <label htmlFor="floatingSelect">Marital Status</label>
+              <label htmlFor="maritalStatusSelect">Marital Status</label>
             </div>
           </li>
           <li className="list-group-item">
             <div className="form-floating">
               <select
                 className="form-select"
-                id="floatingSelect"
+                id="religionSelect"
                 aria-label="Marital Status"
                 defaultValue="Doesn't Matter"
+                onChange={(e) => filterByReligion(e)}
               >
                 <option value="Doesn't Matter">Doesn't Matter</option>
-                <option value={1}>Hindu</option>
-                <option value={2}>Christian</option>
-                <option value={3}>Muslim</option>
-                <option value={3}>Buddhist</option>
-                <option value={4}>Others</option>
+                <option>Hindu</option>
+                <option>Christian</option>
+                <option>Muslim</option>
               </select>
-              <label htmlFor="floatingSelect">Religion</label>
+              <label htmlFor="religionSelect">Religion</label>
             </div>
           </li>
           <li className="list-group-item">
             <div className="form-floating">
               <select
                 className="form-select"
-                id="floatingSelect"
+                id="casteSelect"
                 aria-label="Marital Status"
                 defaultValue="Doesn't Matter"
+                onChange={(e) => filterByCaste(e)}
               >
                 <option value="Doesn't Matter">Doesn't Matter</option>
-                <option value="Kannada">Kannada</option>
-                <option value="Hindi">Hindi</option>
-                <option value="Tamil">Tamil</option>
-                <option value="Telugu">Telugu</option>
-                <option value="Others">Others</option>
+                <option>Gowda</option>
+                <option>Lingayath</option>
+                <option>Vokkaliga</option>
+                <option>Ansari</option>
+                <option>Born Again</option>
+                <option>Catholic</option>
+                <option>Other</option>
               </select>
-              <label htmlFor="floatingSelect">Mother Tongue</label>
+              <label htmlFor="casteSelect">Caste</label>
             </div>
           </li>
           <li className="list-group-item">
             <div className="form-floating">
               <select
                 className="form-select"
-                id="floatingSelect"
+                id="motherTongueSelect"
+                aria-label="Marital Status"
+                defaultValue="Doesn't Matter"
+                onChange={(e) => filterByMotherTongue(e)}
+              >
+                <option value="Doesn't Matter">Doesn't Matter</option>
+                <option>Kannada</option>
+                <option>Malayalam</option>
+                <option>Marathi</option>
+                <option>Telugu</option>
+                <option>Others</option>
+              </select>
+              <label htmlFor="motherTongueSelect">Mother Tongue</label>
+            </div>
+          </li>
+          <li className="list-group-item">
+            <div className="form-floating">
+              <select
+                className="form-select"
+                id="countrySelect"
                 aria-label="Religion"
                 defaultValue="Doesn't Matter"
+                onChange={(e) => filterByCountry(e)}
               >
                 <option value="Doesn't Matter">Doesn't Matter</option>
-                <option value={1}>India</option>
-                <option value={2}>Germany</option>
-                <option value={3}>Oman</option>
+                <option>India</option>
+                <option>USA</option>
               </select>
               <label htmlFor="countrySelect">Country Living In </label>
             </div>
@@ -207,6 +285,10 @@ export const FilterList = ({}: Props) => {
                 <option>Bengaluru</option>
                 <option>Mysuru</option>
                 <option>Ramdurg</option>
+                <option>Bengaluru</option>
+                <option>New York</option>
+                <option>Chicago</option>
+                <option>Dallas</option>
               </select>
               <label htmlFor="citySelect">City </label>
             </div>

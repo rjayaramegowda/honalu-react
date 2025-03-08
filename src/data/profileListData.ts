@@ -1295,16 +1295,16 @@ export const profilesDataProvider: Profile[] = [
       location: {
         country: "USA",
         state: "",
-        district: "Tukwila",
+        district: "New York",
         residency_status: "Citizen",
         zip_code: "",
         country_code: "",
         city_google: "",
         living_since: "",
-        city: "Tukwila",
-        locality: "Tukwila",
-        location: "Tukwila, USA",
-        lives_in: "Lives in Tukwila, USA"
+        city: "New York",
+        locality: "New York",
+        location: "New York, USA",
+        lives_in: "Lives in New York, USA"
       },
       education: {
         education: "B.Sc",
@@ -1497,10 +1497,10 @@ export const profilesDataProvider: Profile[] = [
         country_code: "",
         city_google: "",
         living_since: "",
-        city: "Sebring",
+        city: "Chicago",
         locality: "",
-        location: "Sebring, USA",
-        lives_in: "Lives in Sebring, USA"
+        location: "Chicago, USA",
+        lives_in: "Lives in Chicago, USA"
       },
       education: {
         education: "B.Sc",
