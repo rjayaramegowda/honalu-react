@@ -110,9 +110,11 @@ export const FilterList = ({}: Props) => {
     setCasteValue("Doesn't Matter");
     applyFilter();
 
-    setCasteList(
-      [...casteListAll].filter((item) => e.target.value === item.religion)
-    );
+    const a1 =
+      e.target.value === "Doesn't Matter"
+        ? casteListAll
+        : [...casteListAll].filter((item) => e.target.value === item.religion);
+    setCasteList(a1);
   }
 
   function filterByCaste(e: ChangeEvent<HTMLSelectElement>): void {
@@ -131,9 +133,11 @@ export const FilterList = ({}: Props) => {
     setCityValue("Doesn't Matter");
     applyFilter();
 
-    setcityList(
-      [...cityListAll].filter((item) => e.target.value === item.country)
-    );
+    const a1 =
+      e.target.value === "Doesn't Matter"
+        ? cityListAll
+        : [...cityListAll].filter((item) => e.target.value === item.country);
+    setcityList(a1);
   }
 
   function filterByCity(e: ChangeEvent<HTMLSelectElement>): void {
