@@ -19,8 +19,30 @@ export const FilterList = ({}: Props) => {
   const countryRef = useRef("Doesn't Matter");
   const cityRef = useRef("Doesn't Matter");
 
+  const [casteValue, setCasteValue] = useState("Doesn't Matter");
+  const [cityValue, setCityValue] = useState("Doesn't Matter");
+
   const [minAge, setMinAge] = useState(20);
   const [maxAge, setMaxAge] = useState(50);
+
+  const casteListAll = [
+    { caste: "Gowda", religion: "Hindu" },
+    { caste: "Lingayath", religion: "Hindu" },
+    { caste: "Vokkaliga", religion: "Hindu" },
+    { caste: "Ansari", religion: "Muslim" },
+    { caste: "Born Again", religion: "Christian" },
+    { caste: "Catholic", religion: "Christian" },
+    { caste: "Other", religion: "Hindu" },
+  ];
+
+  const cityListAll = [
+    { city: "Bengaluru", country: "India" },
+    { city: "Mysuru", country: "India" },
+    { city: "Ramdurg", country: "India" },
+    { city: "New York", country: "USA" },
+    { city: "Chicago", country: "USA" },
+    { city: "Dallas", country: "USA" },
+  ];
 
   //DD List
   const [maritalStatusList, setMaritalStatusList] = useState([
@@ -34,31 +56,15 @@ export const FilterList = ({}: Props) => {
     "Christian",
     "Muslim",
   ]);
-  const [casteList, setCasteList] = useState([
-    "Gowda",
-    "Lingayath",
-    "Vokkaliga",
-    "Ansari",
-    "Born Again",
-    "Catholic",
-    "Other",
-  ]);
+  const [casteList, setCasteList] = useState([...casteListAll]);
   const [motherTongueList, setmotherTongueList] = useState([
     "Kannada",
     "Malayalam",
     "Marathi",
     "Telugu",
-    "Others",
   ]);
   const [countryList, setCountryList] = useState(["India", "USA"]);
-  const [cityList, setcityList] = useState([
-    "Bengaluru",
-    "Mysuru",
-    "Ramdurg",
-    "New York",
-    "Chicago",
-    "Dallas",
-  ]);
+  const [cityList, setcityList] = useState([...cityListAll]);
 
   // Repeat
   const maritalStatusListItems = maritalStatusList.map((ms) => (
@@ -67,7 +73,7 @@ export const FilterList = ({}: Props) => {
 
   const religionListItems = religionList.map((ms) => <option>{ms}</option>);
 
-  const casteListItems = casteList.map((ms) => <option>{ms}</option>);
+  const casteListItems = casteList.map((ms) => <option>{ms.caste}</option>);
 
   const motherTongueListItems = motherTongueList.map((ms) => (
     <option>{ms}</option>
@@ -75,7 +81,7 @@ export const FilterList = ({}: Props) => {
 
   const countryListItems = countryList.map((ms) => <option>{ms}</option>);
 
-  const cityListItems = cityList.map((ms) => <option>{ms}</option>);
+  const cityListItems = cityList.map((ms) => <option>{ms.city}</option>);
 
   function handleSortBy(e: ChangeEvent<HTMLSelectElement>): void {
     console.log(e.target.value);
@@ -100,7 +106,13 @@ export const FilterList = ({}: Props) => {
 
   function filterByReligion(e: ChangeEvent<HTMLSelectElement>): void {
     religionRef.current = e.target.value;
+    casteRef.current = "Doesn't Matter";
+    setCasteValue("Doesn't Matter");
     applyFilter();
+
+    setCasteList(
+      [...casteListAll].filter((item) => e.target.value === item.religion)
+    );
   }
 
   function filterByCaste(e: ChangeEvent<HTMLSelectElement>): void {
@@ -115,11 +127,18 @@ export const FilterList = ({}: Props) => {
 
   function filterByCountry(e: ChangeEvent<HTMLSelectElement>): void {
     countryRef.current = e.target.value;
+    cityRef.current = "Doesn't Matter";
+    setCityValue("Doesn't Matter");
     applyFilter();
+
+    setcityList(
+      [...cityListAll].filter((item) => e.target.value === item.country)
+    );
   }
 
   function filterByCity(e: ChangeEvent<HTMLSelectElement>): void {
     cityRef.current = e.target.value;
+    setCityValue(e.target.value);
     applyFilter();
   }
 
@@ -286,6 +305,7 @@ export const FilterList = ({}: Props) => {
                 aria-label="Marital Status"
                 defaultValue="Doesn't Matter"
                 onChange={(e) => filterByCaste(e)}
+                value={casteValue}
               >
                 <option value="Doesn't Matter">Doesn't Matter</option>
                 {casteListItems}
@@ -331,6 +351,7 @@ export const FilterList = ({}: Props) => {
                 aria-label="Religion"
                 defaultValue="Doesn't Matter"
                 onChange={(e) => filterByCity(e)}
+                value={cityValue}
               >
                 <option value="Doesn't Matter">Doesn't Matter</option>
                 {cityListItems}
