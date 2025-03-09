@@ -13,14 +13,69 @@ export const FilterList = ({}: Props) => {
   const dataProvider = useAppSelector(selectDataProvider);
 
   const maritalStatusRef = useRef("Doesn't Matter");
-  const cityRef = useRef("Doesn't Matter");
   const religionRef = useRef("Doesn't Matter");
   const casteRef = useRef("Doesn't Matter");
   const motherTongueRef = useRef("Doesn't Matter");
   const countryRef = useRef("Doesn't Matter");
+  const cityRef = useRef("Doesn't Matter");
 
   const [minAge, setMinAge] = useState(20);
   const [maxAge, setMaxAge] = useState(50);
+
+  //DD List
+  const [maritalStatusList, setMaritalStatusList] = useState([
+    "Never Married",
+    "Divorced",
+    "Widowed",
+  ]);
+
+  const [religionList, setReligionList] = useState([
+    "Hindu",
+    "Christian",
+    "Muslim",
+  ]);
+  const [casteList, setCasteList] = useState([
+    "Gowda",
+    "Lingayath",
+    "Vokkaliga",
+    "Ansari",
+    "Born Again",
+    "Catholic",
+    "Other",
+  ]);
+  const [motherTongueList, setmotherTongueList] = useState([
+    "Kannada",
+    "Malayalam",
+    "Marathi",
+    "Telugu",
+    "Others",
+  ]);
+  const [countryList, setCountryList] = useState(["India", "USA"]);
+  const [cityList, setcityList] = useState([
+    "Bengaluru",
+    "Mysuru",
+    "Ramdurg",
+    "New York",
+    "Chicago",
+    "Dallas",
+  ]);
+
+  // Repeat
+  const maritalStatusListItems = maritalStatusList.map((ms) => (
+    <option>{ms}</option>
+  ));
+
+  const religionListItems = religionList.map((ms) => <option>{ms}</option>);
+
+  const casteListItems = casteList.map((ms) => <option>{ms}</option>);
+
+  const motherTongueListItems = motherTongueList.map((ms) => (
+    <option>{ms}</option>
+  ));
+
+  const countryListItems = countryList.map((ms) => <option>{ms}</option>);
+
+  const cityListItems = cityList.map((ms) => <option>{ms}</option>);
 
   function handleSortBy(e: ChangeEvent<HTMLSelectElement>): void {
     console.log(e.target.value);
@@ -203,9 +258,7 @@ export const FilterList = ({}: Props) => {
                 defaultValue="Doesn't Matter"
               >
                 <option>Doesn't Matter</option>
-                <option>Never Married</option>
-                <option>Divorced</option>
-                <option>Widowed</option>
+                {maritalStatusListItems}
               </select>
               <label htmlFor="maritalStatusSelect">Marital Status</label>
             </div>
@@ -220,9 +273,7 @@ export const FilterList = ({}: Props) => {
                 onChange={(e) => filterByReligion(e)}
               >
                 <option value="Doesn't Matter">Doesn't Matter</option>
-                <option>Hindu</option>
-                <option>Christian</option>
-                <option>Muslim</option>
+                {religionListItems}
               </select>
               <label htmlFor="religionSelect">Religion</label>
             </div>
@@ -237,13 +288,7 @@ export const FilterList = ({}: Props) => {
                 onChange={(e) => filterByCaste(e)}
               >
                 <option value="Doesn't Matter">Doesn't Matter</option>
-                <option>Gowda</option>
-                <option>Lingayath</option>
-                <option>Vokkaliga</option>
-                <option>Ansari</option>
-                <option>Born Again</option>
-                <option>Catholic</option>
-                <option>Other</option>
+                {casteListItems}
               </select>
               <label htmlFor="casteSelect">Caste</label>
             </div>
@@ -258,11 +303,7 @@ export const FilterList = ({}: Props) => {
                 onChange={(e) => filterByMotherTongue(e)}
               >
                 <option value="Doesn't Matter">Doesn't Matter</option>
-                <option>Kannada</option>
-                <option>Malayalam</option>
-                <option>Marathi</option>
-                <option>Telugu</option>
-                <option>Others</option>
+                {motherTongueListItems}
               </select>
               <label htmlFor="motherTongueSelect">Mother Tongue</label>
             </div>
@@ -277,8 +318,7 @@ export const FilterList = ({}: Props) => {
                 onChange={(e) => filterByCountry(e)}
               >
                 <option value="Doesn't Matter">Doesn't Matter</option>
-                <option>India</option>
-                <option>USA</option>
+                {countryListItems}
               </select>
               <label htmlFor="countrySelect">Country Living In </label>
             </div>
@@ -293,13 +333,7 @@ export const FilterList = ({}: Props) => {
                 onChange={(e) => filterByCity(e)}
               >
                 <option value="Doesn't Matter">Doesn't Matter</option>
-                <option>Bengaluru</option>
-                <option>Mysuru</option>
-                <option>Ramdurg</option>
-                <option>Bengaluru</option>
-                <option>New York</option>
-                <option>Chicago</option>
-                <option>Dallas</option>
+                {cityListItems}
               </select>
               <label htmlFor="citySelect">City </label>
             </div>
