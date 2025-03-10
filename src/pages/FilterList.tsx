@@ -119,6 +119,7 @@ export const FilterList = ({}: Props) => {
 
   function filterByCaste(e: ChangeEvent<HTMLSelectElement>): void {
     casteRef.current = e.target.value;
+    setCasteValue(e.target.value);
     applyFilter();
   }
 
