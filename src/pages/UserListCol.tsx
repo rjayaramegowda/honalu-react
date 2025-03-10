@@ -15,7 +15,12 @@ function UserListCol() {
 
   return (
     <div className="col-md-9">
-      <div className="row g-3">{listItems}</div>
+      <div className={listItems.length > 0 ? "row g-3" : "d-none"}>
+        {listItems}
+      </div>
+      <p className={listItems.length === 0 ? "p-5" : "d-none"}>
+        No profile found!
+      </p>
     </div>
   );
 }
