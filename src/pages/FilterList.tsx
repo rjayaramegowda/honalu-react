@@ -364,14 +364,6 @@ export const FilterList = ({}: Props) => {
               <label htmlFor="citySelect">City </label>
             </div>
           </li>
-          <li className="list-group-item">
-            <button
-              type="button"
-              className="btn btn-secondary rounded-pill px-3"
-            >
-              Clear Filter
-            </button>
-          </li>
         </ul>
       </div>
     </div>
