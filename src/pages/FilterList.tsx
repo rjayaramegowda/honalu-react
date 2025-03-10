@@ -21,6 +21,7 @@ export const FilterList = ({}: Props) => {
 
   const [casteValue, setCasteValue] = useState("Doesn't Matter");
   const [cityValue, setCityValue] = useState("Doesn't Matter");
+  const [sortDefaultValue, setsortDefaultValue] = useState("Choose");
 
   const [minAge, setMinAge] = useState(20);
   const [maxAge, setMaxAge] = useState(50);
@@ -84,7 +85,7 @@ export const FilterList = ({}: Props) => {
   const cityListItems = cityList.map((ms) => <option>{ms.city}</option>);
 
   function handleSortBy(e: ChangeEvent<HTMLSelectElement>): void {
-    console.log(e.target.value);
+    setsortDefaultValue(e.target.value);
     switch (e.target.value) {
       case "age":
         dispatch(sortByAge(getSortedByAge([...dataProvider])));
@@ -153,6 +154,7 @@ export const FilterList = ({}: Props) => {
   }
 
   function filterFunction(p: Profile) {
+    setsortDefaultValue("Choose");
     if (Number(p.basic.age) < minAge || Number(p.basic.age) > maxAge) {
       return false;
     }
@@ -226,11 +228,9 @@ export const FilterList = ({}: Props) => {
               id="inputState"
               onChange={(e) => handleSortBy(e)}
               className="form-select"
-              defaultValue="choose"
+              value={sortDefaultValue}
             >
-              <option value="choose" disabled={true}>
-                Choose
-              </option>
+              <option value="choose">Choose</option>
               <option value="age">Age</option>
               <option value="date_created">Date Created</option>
             </select>
