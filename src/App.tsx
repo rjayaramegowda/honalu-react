@@ -1,12 +1,13 @@
 import { FilterList } from "./pages/FilterList";
+import ProfileDetailsPage from "./pages/ProfileDetailsPage";
+import ProfileListPage from "./pages/ProfileListPage";
 import UserListCol from "./pages/UserListCol";
 
 const App = () => {
   return (
-    <div className="row">
-      <FilterList />
-      <UserListCol />
-    </div>
+    <main className="row">
+      <ProfileDetailsPage />
+    </main>
   );
 };
 
