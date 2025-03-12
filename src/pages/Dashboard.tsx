@@ -6,6 +6,7 @@ import {
   selectResultData,
   filterDashbaordData,
   selectDasboardActivePage,
+  setDasboardActivePage,
 } from "../features/counter/counterSlice";
 import { Profile } from "../models/profile.model";
 
@@ -34,6 +35,7 @@ const Dashboard = () => {
     activeRef.current = string;
     applyFilter();
     setActiveTab(string);
+    dispatch(setDasboardActivePage(string));
   }
 
   useEffect(() => {

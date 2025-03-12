@@ -56,6 +56,11 @@ export const counterSlice = createAppSlice({
         state.dashboardData = [...action.payload]
       },
     ),
+    setDasboardActivePage: create.reducer(
+      (state, action: any) => {
+        state.dasboardActivePage = action.payload
+      },
+    ),
 
 
     // The function below is called a thunk and allows us to perform async logic. It
@@ -96,7 +101,7 @@ export const counterSlice = createAppSlice({
 })
 
 // Action creators are generated for each case reducer function.
-export const { decrement, increment, incrementByAmount, incrementAsync, sortByAge, filterDashbaordData } =
+export const { decrement, increment, incrementByAmount, incrementAsync, sortByAge, filterDashbaordData, setDasboardActivePage } =
   counterSlice.actions
 
 // Selectors returned by `slice.selectors` take the root state as their first argument.
