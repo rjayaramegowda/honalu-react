@@ -4,10 +4,10 @@ import { Profile } from "../models/profile.model";
 import ProfileDetailsLeftCol from "./ProfileDetailsLeftCol";
 import ProfileDetailsRightCol from "./ProfileDetailsRightCol";
 import { useAppSelector } from "../app/hooks";
-import { selectDataProvider } from "../features/counter/counterSlice";
+import { selectResultData } from "../features/counter/counterSlice";
 
 export const ProfileDetailsPage = () => {
-  const dataProvider = useAppSelector(selectDataProvider);
+  const dataProvider = useAppSelector(selectResultData);
 
   return (
     <>

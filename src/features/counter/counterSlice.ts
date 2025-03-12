@@ -8,13 +8,17 @@ import { Profile } from "../../models/profile.model"
 export interface CounterSliceState {
   value: number
   status: "idle" | "loading" | "failed",
-  dataProvider: Profile[];
+  resultData: Profile[];
+  filteredData: Profile[];
+  dashboardData: Profile[];
 }
 
 const initialState: CounterSliceState = {
   value: 0,
   status: "idle",
-  dataProvider: profilesDataProvider
+  resultData: profilesDataProvider,
+  filteredData: profilesDataProvider,
+  dashboardData: profilesDataProvider
 }
 
 // If you are not using async thunks you can use the standalone `createSlice`.
@@ -42,7 +46,12 @@ export const counterSlice = createAppSlice({
     ),
     sortByAge: create.reducer(
       (state, action: PayloadAction<Profile[]>) => {
-        state.dataProvider = [...action.payload]
+        state.filteredData = [...action.payload]
+      },
+    ),
+    filterDashbaordData: create.reducer(
+      (state, action: PayloadAction<Profile[]>) => {
+        state.dashboardData = [...action.payload]
       },
     ),
 
@@ -77,7 +86,9 @@ export const counterSlice = createAppSlice({
   selectors: {
     selectCount: counter => counter.value,
     selectStatus: counter => counter.status,
-    selectDataProvider: counter => counter.dataProvider
+    selectResultData: counter => counter.resultData,
+    selectFilteredData: counter => counter.filteredData,
+    selectDashboardData: counter => counter.dashboardData
   },
 })
 
@@ -86,7 +97,7 @@ export const { decrement, increment, incrementByAmount, incrementAsync, sortByAg
   counterSlice.actions
 
 // Selectors returned by `slice.selectors` take the root state as their first argument.
-export const { selectCount, selectStatus,selectDataProvider } = counterSlice.selectors
+export const { selectCount, selectStatus, selectResultData, selectFilteredData, selectDashboardData } = counterSlice.selectors
 
 // We can also write thunks by hand, which may contain both sync and async logic.
 // Here's an example of conditionally dispatching actions based on current state.

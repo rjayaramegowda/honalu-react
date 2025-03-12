@@ -2,7 +2,7 @@ import { ChangeEvent, useRef, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
 import {
   sortByAge,
-  selectDataProvider,
+  selectFilteredData,
 } from "../features/counter/counterSlice";
 import { Profile } from "../models/profile.model";
 import { profilesDataProvider } from "../data/profileListData";
@@ -10,7 +10,7 @@ import { profilesDataProvider } from "../data/profileListData";
 type Props = {};
 export const FilterList = ({}: Props) => {
   const dispatch = useAppDispatch();
-  const dataProvider = useAppSelector(selectDataProvider);
+  const dataProvider = useAppSelector(selectFilteredData);
 
   const maritalStatusRef = useRef("Doesn't Matter");
   const religionRef = useRef("Doesn't Matter");

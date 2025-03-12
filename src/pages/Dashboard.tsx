@@ -1,13 +1,13 @@
 import { useState } from "react";
 import ProfileCard2 from "./ProfileCard2";
 import { useAppSelector } from "../app/hooks";
-import { selectDataProvider } from "../features/counter/counterSlice";
+import { selectFilteredData } from "../features/counter/counterSlice";
 import { Profile } from "../models/profile.model";
 
 const Dashboard = () => {
   const [activeTab, setActiveTab] = useState("Sent");
 
-  const dataProvider = useAppSelector(selectDataProvider);
+  const dataProvider = useAppSelector(selectFilteredData);
   const listItems = dataProvider.map((vo: Profile) => (
     <ProfileCard2 vo={vo} key={vo.basic.display_name + vo.basic.username} />
   ));
