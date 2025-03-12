@@ -1,23 +1,54 @@
-import { useState } from "react";
+import { SetStateAction, useEffect, useRef, useState } from "react";
 import ProfileCard2 from "./ProfileCard2";
-import { useAppSelector } from "../app/hooks";
-import { selectFilteredData } from "../features/counter/counterSlice";
+import { useAppDispatch, useAppSelector } from "../app/hooks";
+import {
+  selectDashboardData,
+  selectResultData,
+  filterDashbaordData,
+  selectDasboardActivePage,
+} from "../features/counter/counterSlice";
 import { Profile } from "../models/profile.model";
 
 const Dashboard = () => {
-  const [activeTab, setActiveTab] = useState("Sent");
+  const dispatch = useAppDispatch();
 
-  const dataProvider = useAppSelector(selectFilteredData);
+  const [activeTab, setActiveTab] = useState(
+    useAppSelector(selectDasboardActivePage)
+  );
+  const activeRef = useRef("");
+
+  const resultData = useAppSelector(selectResultData);
+  const dataProvider = useAppSelector(selectDashboardData);
   const listItems = dataProvider.map((vo: Profile) => (
     <ProfileCard2 vo={vo} key={vo.basic.display_name + vo.basic.username} />
   ));
+
+  function applyFilter() {
+    const a1 = resultData.filter(
+      (p: Profile) => p.connect.status === activeRef.current
+    );
+    dispatch(filterDashbaordData(a1));
+  }
+
+  function handleClick(string: any) {
+    activeRef.current = string;
+    applyFilter();
+    setActiveTab(string);
+  }
+
+  useEffect(() => {
+    activeRef.current = activeTab;
+    applyFilter();
+    //setActiveTab("Recieved");
+    return () => {};
+  }, []);
 
   return (
     <div className="col-md-12">
       <ul className="nav nav-tabs">
         <li className="nav-item">
           <button
-            onClick={(e) => setActiveTab("Sent")}
+            onClick={(e) => handleClick("Sent")}
             className={activeTab === "Sent" ? "nav-link active" : "nav-link"}
             aria-current="page"
           >
@@ -26,7 +57,7 @@ const Dashboard = () => {
         </li>
         <li className="nav-item">
           <button
-            onClick={(e) => setActiveTab("Recieved")}
+            onClick={(e) => handleClick("Recieved")}
             className={
               activeTab === "Recieved" ? "nav-link active" : "nav-link"
             }
@@ -39,7 +70,7 @@ const Dashboard = () => {
             className={
               activeTab === "Accepted" ? "nav-link active" : "nav-link"
             }
-            onClick={(e) => setActiveTab("Accepted")}
+            onClick={(e) => handleClick("Accepted")}
           >
             Accepted
           </button>
@@ -47,7 +78,7 @@ const Dashboard = () => {
         <li className="nav-item">
           <button
             className={activeTab === "Deleted" ? "nav-link active" : "nav-link"}
-            onClick={(e) => setActiveTab("Deleted")}
+            onClick={(e) => handleClick("Deleted")}
           >
             Deleted
           </button>
