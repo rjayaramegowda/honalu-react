@@ -44,14 +44,14 @@ const ProfileCard2 = (props: { vo: Profile | null | undefined }) => {
   return (
     <div className="card mb-3">
       <div className="row g-0">
-        <div className="col-3">
+        <div className="col-4 col-md-3">
           <img
             src={props.vo?.photo_details.photos[0].medium}
-            className="img-fluid rounded p-3 ms-1"
+            className="img-fluid rounded p-1 pt-2 p-md-3 ms-1"
             alt="..."
           />
         </div>
-        <div className="col-9">
+        <div className="col-8 col-md-9">
           <div className="card-body">
             <h6 className="card-title">{props.vo?.basic.display_name}</h6>
             <p className="card-text">
