@@ -50,10 +50,16 @@ export const counterSlice = createAppSlice({
       (state, action: PayloadAction<Profile[]>) => {
         state.filteredData = [...action.payload]
       },
-    ),
+    )    ,
     filterDashbaordData: create.reducer(
       (state, action: PayloadAction<Profile[]>) => {
         state.dashboardData = [...action.payload]
+      },
+    ),
+    updateResultData: create.reducer(
+      (state, action: PayloadAction<Profile[]>) => {
+        console.log(action.payload)
+        state.resultData = [...action.payload]
       },
     ),
     setDasboardActivePage: create.reducer(
@@ -101,7 +107,7 @@ export const counterSlice = createAppSlice({
 })
 
 // Action creators are generated for each case reducer function.
-export const { decrement, increment, incrementByAmount, incrementAsync, sortByAge, filterDashbaordData, setDasboardActivePage } =
+export const { decrement, increment, incrementByAmount, incrementAsync, sortByAge, updateResultData, filterDashbaordData, setDasboardActivePage } =
   counterSlice.actions
 
 // Selectors returned by `slice.selectors` take the root state as their first argument.
