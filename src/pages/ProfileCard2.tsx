@@ -24,19 +24,7 @@ const ProfileCard2 = (props: { vo: Profile | null | undefined }) => {
   const showCancelBtn = activeTab !== "Deleted" ? true : false;
   const showAcceptBtn = activeTab === "Recieved" ? true : false;
   const showContactBtn = activeTab === "Accepted" ? true : false;
-  const showConnectBtn = activeTab === "Deleted" ? true : false;
-
-  function handleCancel(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
-    updateConnection("Deleted");
-  }
-
-  function handleConnect(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
-    updateConnection("Sent");
-  }
-
-  function handleAccept(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
-    updateConnection("Accepted");
-  }
+  const showConnectBtn = false;
 
   function updateConnection(s1: string) {
     const findIndex = resultData.indexOf(props.vo as Profile);
@@ -47,8 +35,6 @@ const ProfileCard2 = (props: { vo: Profile | null | undefined }) => {
     );
     dispatch(updateResultData(a1));
 
-    //Refresh view
-    console.log(dashboardData.length);
     const a2 = dashboardData.filter((item) =>
       item.basic.username != props.vo?.basic.username ? true : false
     );
