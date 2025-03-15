@@ -7,7 +7,7 @@ import UserListCol from "./pages/UserListCol";
 const App = () => {
   return (
     <main className="row">
-      <Dashboard />
+      <ProfileListPage />
     </main>
   );
 };

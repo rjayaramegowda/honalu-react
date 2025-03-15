@@ -216,7 +216,7 @@ export const FilterList = ({}: Props) => {
   }
 
   return (
-    <div className="col-md-3 mb-3 bg-light p-3 d-none d-md-block">
+    <>
       <div className="card mb-3">
         <div className="card-header">Sort By</div>
         <ul className="list-group list-group-flush">
@@ -366,6 +366,6 @@ export const FilterList = ({}: Props) => {
           </li>
         </ul>
       </div>
-    </div>
+    </>
   );
 };
