@@ -1,12 +1,20 @@
 import React, { useState } from "react";
 import PropTypes, { any, string } from "prop-types";
 import { Profile } from "../models/profile.model";
+import { useAppDispatch } from "../app/hooks";
+import { setActiveProfile } from "../features/counter/counterSlice";
+import { Link } from "react-router";
 
 ProfileCard.propTypes = {
   vo: any,
 };
 
 function ProfileCard(props: { vo: Profile | null | undefined }) {
+  const dispatch = useAppDispatch();
+
+  function hancleClick() {
+    dispatch(setActiveProfile(props.vo as Profile));
+  }
   return (
     <div className="col-md-4">
       {/* Profile Begins*/}
@@ -33,10 +41,11 @@ function ProfileCard(props: { vo: Profile | null | undefined }) {
             {props.vo?.location.location}
           </p>
           <div className="text-center">
-            <a
-              href="profile.html"
+            <Link
+              to="./details"
               className="btn btn-success rounded-pill px-5"
               type="button"
+              onClick={hancleClick}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -51,8 +60,8 @@ function ProfileCard(props: { vo: Profile | null | undefined }) {
                   d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"
                 />
               </svg>
-              Connect
-            </a>
+              View Details
+            </Link>
           </div>
         </div>
       </div>

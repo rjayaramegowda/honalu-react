@@ -12,12 +12,14 @@ export interface CounterSliceState {
   resultData: Profile[];
   filteredData: Profile[];
   dashboardData: Profile[];
+  activeProfile: any;
 }
 
 const initialState: CounterSliceState = {
   value: 0,
   status: "idle",
   dasboardActivePage: "Sent",
+  activeProfile: profilesDataProvider[0],
   resultData: profilesDataProvider,
   filteredData: profilesDataProvider,
   dashboardData: profilesDataProvider
@@ -67,6 +69,11 @@ export const counterSlice = createAppSlice({
         state.dasboardActivePage = action.payload
       },
     ),
+    setActiveProfile: create.reducer(
+      (state, action: PayloadAction<Profile>) => {
+        state.activeProfile = action.payload
+      },
+    ),
 
 
     // The function below is called a thunk and allows us to perform async logic. It
@@ -102,16 +109,17 @@ export const counterSlice = createAppSlice({
     selectDasboardActivePage: counter => counter.dasboardActivePage,
     selectResultData: counter => counter.resultData,
     selectFilteredData: counter => counter.filteredData,
-    selectDashboardData: counter => counter.dashboardData
+    selectDashboardData: counter => counter.dashboardData,
+    selectActiveProfile: counter => counter.activeProfile,
   },
 })
 
 // Action creators are generated for each case reducer function.
-export const { decrement, increment, incrementByAmount, incrementAsync, sortByAge, updateResultData, filterDashbaordData, setDasboardActivePage } =
+export const { decrement, increment, incrementByAmount, incrementAsync, sortByAge, updateResultData, filterDashbaordData, setDasboardActivePage, setActiveProfile } =
   counterSlice.actions
 
 // Selectors returned by `slice.selectors` take the root state as their first argument.
-export const { selectCount, selectStatus, selectDasboardActivePage, selectResultData, selectFilteredData, selectDashboardData } = counterSlice.selectors
+export const { selectCount, selectStatus, selectDasboardActivePage, selectResultData, selectFilteredData, selectDashboardData, selectActiveProfile } = counterSlice.selectors
 
 // We can also write thunks by hand, which may contain both sync and async logic.
 // Here's an example of conditionally dispatching actions based on current state.
