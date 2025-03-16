@@ -21,7 +21,7 @@ const ProfileCard2 = (props: { vo: Profile | null | undefined }) => {
     useAppSelector(selectDasboardActivePage)
   );
 
-  const showCancelBtn = activeTab !== "Deleted" ? true : false;
+  const showCancelBtn = activeTab !== "Declined" ? true : false;
   const showAcceptBtn = activeTab === "Recieved" ? true : false;
   const showContactBtn = activeTab === "Accepted" ? true : false;
   const showConnectBtn = false;
@@ -153,7 +153,7 @@ const ProfileCard2 = (props: { vo: Profile | null | undefined }) => {
                   : "d-none"
               }
               type="button"
-              onClick={() => updateConnection("Deleted")}
+              onClick={() => updateConnection("Declined")}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"

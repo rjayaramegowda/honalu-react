@@ -79,10 +79,12 @@ const Dashboard = () => {
         </li>
         <li className="nav-item">
           <button
-            className={activeTab === "Deleted" ? "nav-link active" : "nav-link"}
-            onClick={(e) => handleClick("Deleted")}
+            className={
+              activeTab === "Declined" ? "nav-link active" : "nav-link"
+            }
+            onClick={(e) => handleClick("Declined")}
           >
-            Deleted
+            Declined
           </button>
         </li>
       </ul>

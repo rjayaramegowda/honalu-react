@@ -8,7 +8,7 @@ import { Profile } from "../../models/profile.model"
 export interface CounterSliceState {
   value: number
   status: "idle" | "loading" | "failed",
-  dasboardActivePage: "Recieved" | "Sent" | "Deleted" | "Accepted" | "Connect",
+  dasboardActivePage: "Recieved" | "Sent" | "Declined" | "Accepted" | "Connect",
   resultData: Profile[];
   filteredData: Profile[];
   dashboardData: Profile[];
