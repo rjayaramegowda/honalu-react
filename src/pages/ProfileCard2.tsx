@@ -7,10 +7,12 @@ import {
   selectDashboardData,
   selectFilteredData,
   selectResultData,
+  setActiveProfile,
   updateResultData,
 } from "../features/counter/counterSlice";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
 import { connect } from "react-redux";
+import { Link } from "react-router";
 
 const ProfileCard2 = (props: { vo: Profile | null | undefined }) => {
   const dispatch = useAppDispatch();
@@ -41,6 +43,10 @@ const ProfileCard2 = (props: { vo: Profile | null | undefined }) => {
     dispatch(filterDashbaordData(a2));
   }
 
+  function hancleClick() {
+    dispatch(setActiveProfile(props.vo as Profile));
+  }
+
   return (
     <div className="card mb-3">
       <div className="row g-0">
@@ -60,7 +66,7 @@ const ProfileCard2 = (props: { vo: Profile | null | undefined }) => {
               <br />
               {props.vo?.location.location}
             </p>
-            <h5 className="card-title d-none d-md-block">About Me</h5>
+            <h6 className="card-title d-none d-md-block">About Me</h6>
             <p className="card-text d-none d-md-block">
               {props.vo?.trait.about_me}
             </p>
@@ -70,9 +76,14 @@ const ProfileCard2 = (props: { vo: Profile | null | undefined }) => {
             </p>
 
             <p className=" d-none d-md-block">
-              <a className="link-underline-primary " href="./profile.html">
-                Read More
-              </a>
+              <Link
+                className="link-underline-primary "
+                to="../details"
+                type="button"
+                onClick={hancleClick}
+              >
+                View Details
+              </Link>
             </p>
 
             <button
