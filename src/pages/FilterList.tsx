@@ -7,8 +7,7 @@ import {
 import { Profile } from "../models/profile.model";
 import { profilesDataProvider } from "../data/profileListData";
 
-type Props = {};
-export const FilterList = ({}: Props) => {
+export const FilterList = () => {
   const dispatch = useAppDispatch();
   const dataProvider = useAppSelector(selectFilteredData);
 
@@ -69,20 +68,40 @@ export const FilterList = ({}: Props) => {
 
   // Repeat
   const maritalStatusListItems = maritalStatusList.map((ms) => (
-    <option>{ms}</option>
+    <option key={ms} value={ms}>
+      {ms}
+    </option>
   ));
 
-  const religionListItems = religionList.map((ms) => <option>{ms}</option>);
+  const religionListItems = religionList.map((ms) => (
+    <option key={ms} value={ms}>
+      {ms}
+    </option>
+  ));
 
-  const casteListItems = casteList.map((ms) => <option>{ms.caste}</option>);
+  const casteListItems = casteList.map((ms) => (
+    <option key={ms.caste} value={ms.caste}>
+      {ms.caste}
+    </option>
+  ));
 
   const motherTongueListItems = motherTongueList.map((ms) => (
-    <option>{ms}</option>
+    <option key={ms} value={ms}>
+      {ms}
+    </option>
   ));
 
-  const countryListItems = countryList.map((ms) => <option>{ms}</option>);
+  const countryListItems = countryList.map((ms) => (
+    <option key={ms} value={ms}>
+      {ms}
+    </option>
+  ));
 
-  const cityListItems = cityList.map((ms) => <option>{ms.city}</option>);
+  const cityListItems = cityList.map((ms) => (
+    <option key={ms.city} value={ms.city}>
+      {ms.city}
+    </option>
+  ));
 
   function handleSortBy(e: ChangeEvent<HTMLSelectElement>): void {
     setsortDefaultValue(e.target.value);
@@ -281,7 +300,7 @@ export const FilterList = ({}: Props) => {
                 onChange={(e) => filterByMaritalStatus(e)}
                 defaultValue="Doesn't Matter"
               >
-                <option>Doesn't Matter</option>
+                <option value="Doesn't Matter">Doesn't Matter</option>
                 {maritalStatusListItems}
               </select>
               <label htmlFor="maritalStatusSelect">Marital Status</label>
