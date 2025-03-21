@@ -7,7 +7,7 @@ import { useAppSelector } from "../app/hooks";
 import {
   selectActiveProfile,
   selectResultData,
-} from "../features/counter/counterSlice";
+} from "../reducers/slice/profilesSlice";
 
 export const ProfileDetailsPage = () => {
   const dataProvider = useAppSelector(selectResultData);

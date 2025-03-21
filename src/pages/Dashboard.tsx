@@ -7,7 +7,7 @@ import {
   filterDashbaordData,
   selectDasboardActivePage,
   setDasboardActivePage,
-} from "../features/counter/counterSlice";
+} from "../reducers/slice/profilesSlice";
 import { Profile } from "../models/profile.model";
 
 const Dashboard = () => {

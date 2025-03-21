@@ -4,8 +4,11 @@ import { FilterList } from "./pages/FilterList";
 import ProfileDetailsPage from "./pages/ProfileDetailsPage";
 import ProfileListPage from "./pages/ProfileListPage";
 import UserListCol from "./pages/UserListCol";
+import { useProfilesQuery } from "./reducers/api/profilesApi";
 
 const App = () => {
+  const { data, error, isLoading, isFetching, isSuccess } = useProfilesQuery();
+
   return (
     <main className="row">
       <BrowserRouter>
