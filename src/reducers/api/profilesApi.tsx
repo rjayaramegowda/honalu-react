@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { Profile } from "../../models/profile.model";
+import { FiltersVO } from "../../models/fileters.model";
 
 export const profilesApi = createApi({
   reducerPath: "profilesApi",
@@ -10,9 +11,9 @@ export const profilesApi = createApi({
       query: () => "/profiles",
       providesTags: ["Profile"],
     }),
-    // profile: builder.query<Profile, number>({
-    //   query: (id) => `/profiles/${id}`,
-    // }),
+    filters: builder.query<FiltersVO, void>({
+      query: () => `/filters/`,
+    }),
     // deleteProfile: builder.mutation<void, number>({
     //   query(id) {
     //     return {
@@ -37,6 +38,7 @@ export const profilesApi = createApi({
 
 export const {
   useProfilesQuery,
+  useFiltersQuery,
   // useProfileQuery,
   // useDeleteProfileMutation,
   // useAddProfileMutation,

@@ -4,10 +4,17 @@ import {
   sortByAge,
   selectFilteredData,
   selectResultData,
+  selectCasteListAll,
+  selectCityListAll,
+  selectMaritalStatusList,
+  selectReligionList,
+  selectMotherTongueList,
+  selectCountryList,
 } from "../reducers/slice/profilesSlice";
 import { Profile } from "../models/profile.model";
+import { FiltersVO } from "../models/fileters.model";
 
-export const FilterList = () => {
+export const FilterList = (props: { vo: FiltersVO | null | undefined }) => {
   const dispatch = useAppDispatch();
   const dataProvider = useAppSelector(selectFilteredData);
   const resultData = useAppSelector(selectResultData);
@@ -26,55 +33,25 @@ export const FilterList = () => {
   const [minAge, setMinAge] = useState(20);
   const [maxAge, setMaxAge] = useState(50);
 
-  const casteListAll = [
-    { caste: "Gowda", religion: "Hindu" },
-    { caste: "Lingayath", religion: "Hindu" },
-    { caste: "Vokkaliga", religion: "Hindu" },
-    { caste: "Ansari", religion: "Muslim" },
-    { caste: "Born Again", religion: "Christian" },
-    { caste: "Catholic", religion: "Christian" },
-    { caste: "Other", religion: "Hindu" },
-  ];
-
-  const cityListAll = [
-    { city: "Bengaluru", country: "India" },
-    { city: "Mysuru", country: "India" },
-    { city: "Ramdurg", country: "India" },
-    { city: "New York", country: "USA" },
-    { city: "Chicago", country: "USA" },
-    { city: "Dallas", country: "USA" },
-  ];
+  const casteListAll = useAppSelector(selectCasteListAll);
+  const cityListAll = useAppSelector(selectCityListAll);
 
   //DD List
-  const [maritalStatusList, setMaritalStatusList] = useState([
-    "Never Married",
-    "Divorced",
-    "Widowed",
-  ]);
-
-  const [religionList, setReligionList] = useState([
-    "Hindu",
-    "Christian",
-    "Muslim",
-  ]);
+  const maritalStatusList = useAppSelector(selectMaritalStatusList);
+  const religionList = useAppSelector(selectReligionList);
   const [casteList, setCasteList] = useState([...casteListAll]);
-  const [motherTongueList, setmotherTongueList] = useState([
-    "Kannada",
-    "Malayalam",
-    "Marathi",
-    "Telugu",
-  ]);
-  const [countryList, setCountryList] = useState(["India", "USA"]);
+  const motherTongueList = useAppSelector(selectMotherTongueList);
+  const countryList = useAppSelector(selectCountryList);
   const [cityList, setcityList] = useState([...cityListAll]);
 
   // Repeat
-  const maritalStatusListItems = maritalStatusList.map((ms) => (
+  const maritalStatusListItems = maritalStatusList.map((ms: any) => (
     <option key={ms} value={ms}>
       {ms}
     </option>
   ));
 
-  const religionListItems = religionList.map((ms) => (
+  const religionListItems = religionList.map((ms: any) => (
     <option key={ms} value={ms}>
       {ms}
     </option>
@@ -86,13 +63,13 @@ export const FilterList = () => {
     </option>
   ));
 
-  const motherTongueListItems = motherTongueList.map((ms) => (
+  const motherTongueListItems = motherTongueList.map((ms: any) => (
     <option key={ms} value={ms}>
       {ms}
     </option>
   ));
 
-  const countryListItems = countryList.map((ms) => (
+  const countryListItems = countryList.map((ms: any) => (
     <option key={ms} value={ms}>
       {ms}
     </option>

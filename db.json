@@ -1,4 +1,66 @@
 {
+  "filters": {
+    "country": ["India", "USA"],
+    "religion": ["Hindu", "Christian", "Muslim"],
+    "maritalStatus": ["Never Married", "Divorced", "Widowed"],
+    "motherTongueList": ["Kannada", "Malayalam", "Marathi", "Telugu"],
+    "cityList": [
+      {
+        "city": "Bengaluru",
+        "country": "India"
+      },
+      {
+        "city": "Mysuru",
+        "country": "India"
+      },
+      {
+        "city": "Ramdurg",
+        "country": "India"
+      },
+      {
+        "city": "New York",
+        "country": "USA"
+      },
+      {
+        "city": "Chicago",
+        "country": "USA"
+      },
+      {
+        "city": "Dallas",
+        "country": "USA"
+      }
+    ],
+    "casteList": [
+      {
+        "caste": "Gowda",
+        "religion": "Hindu"
+      },
+      {
+        "caste": "Lingayath",
+        "religion": "Hindu"
+      },
+      {
+        "caste": "Vokkaliga",
+        "religion": "Hindu"
+      },
+      {
+        "caste": "Ansari",
+        "religion": "Muslim"
+      },
+      {
+        "caste": "Born Again",
+        "religion": "Christian"
+      },
+      {
+        "caste": "Catholic",
+        "religion": "Christian"
+      },
+      {
+        "caste": "Other",
+        "religion": "Hindu"
+      }
+    ]
+  },
   "profiles": [
     {
       "account": {

@@ -1,7 +1,8 @@
 import React from "react";
 import { FilterList } from "./FilterList";
+import { FiltersVO } from "../models/fileters.model";
 
-const FilterListSM = () => {
+const FilterListSM = (props: { vo: FiltersVO | null | undefined }) => {
   return (
     <>
       <div className="col-md-3 mb-3 d-md-none d-block ">
@@ -38,7 +39,7 @@ const FilterListSM = () => {
         <div className="modal-dialog modal-dialog-scrollable">
           <div className="modal-content">
             <div className="modal-body">
-              <FilterList />
+              <FilterList vo={props.vo} />
             </div>
             <div className="modal-footer">
               <button
