@@ -3,13 +3,14 @@ import { useAppDispatch, useAppSelector } from "../app/hooks";
 import {
   sortByAge,
   selectFilteredData,
-} from "../features/counter/counterSlice";
+  selectResultData,
+} from "../reducers/slice/profilesSlice";
 import { Profile } from "../models/profile.model";
-import { profilesDataProvider } from "../data/profileListData";
 
 export const FilterList = () => {
   const dispatch = useAppDispatch();
   const dataProvider = useAppSelector(selectFilteredData);
+  const resultData = useAppSelector(selectResultData);
 
   const maritalStatusRef = useRef("Doesn't Matter");
   const religionRef = useRef("Doesn't Matter");
@@ -168,7 +169,7 @@ export const FilterList = () => {
   }
 
   function applyFilter() {
-    const a1 = [...profilesDataProvider].filter(filterFunction);
+    const a1 = [...resultData].filter(filterFunction);
     dispatch(sortByAge(a1));
   }
 

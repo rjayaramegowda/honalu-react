@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import PropTypes, { any, string } from "prop-types";
 import { Profile } from "../models/profile.model";
 import { useAppDispatch } from "../app/hooks";
-import { setActiveProfile } from "../features/counter/counterSlice";
+import { setActiveProfile } from "../reducers/slice/profilesSlice";
 import { Link } from "react-router";
 
 ProfileCard.propTypes = {

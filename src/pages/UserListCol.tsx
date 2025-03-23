@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import ProfileCard from "./ProfileCard";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
-import { selectFilteredData } from "../features/counter/counterSlice";
+import { selectFilteredData } from "../reducers/slice/profilesSlice";
 import { Profile } from "../models/profile.model";
 
 UserListCol.propTypes = {};

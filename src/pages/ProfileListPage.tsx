@@ -2,6 +2,7 @@ import React from "react";
 import { FilterList } from "./FilterList";
 import UserListCol from "./UserListCol";
 import FilterListSM from "./FilterListSM";
+import { useProfilesQuery } from "../reducers/api/profilesApi";
 
 const ProfileListPage = () => {
   return (

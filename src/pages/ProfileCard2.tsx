@@ -9,7 +9,7 @@ import {
   selectResultData,
   setActiveProfile,
   updateResultData,
-} from "../features/counter/counterSlice";
+} from "../reducers/slice/profilesSlice";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
 import { connect } from "react-redux";
 import { Link } from "react-router";
