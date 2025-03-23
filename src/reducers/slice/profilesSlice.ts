@@ -2,6 +2,7 @@ import type { PayloadAction } from "@reduxjs/toolkit"
 import { createAppSlice } from "../../app/createAppSlice"
 import { Profile } from "../../models/profile.model"
 import { profilesApi } from "../api/profilesApi";
+import { CasteList, CityList } from "../../models/fileters.model";
 
 export interface ProfileSliceState {
   dasboardActivePage: "Recieved" | "Sent" | "Declined" | "Accepted" | "Connect",
@@ -9,7 +10,13 @@ export interface ProfileSliceState {
   filteredData: Profile[];
   dashboardData: Profile[];
   activeProfile: any;
-  status: string
+  status: string,
+  casteListAll: CasteList[],
+  cityListAll: CityList[],
+  maritalStatusList: any,
+  countryList: any,
+  religionList: any,  
+  motherTongueList: any
 }
 
 const initialState: ProfileSliceState = {
@@ -18,7 +25,13 @@ const initialState: ProfileSliceState = {
   resultData: [],
   filteredData: [],
   dashboardData: [],
-  status:'idle'
+  status:'idle',
+  casteListAll: [],
+  cityListAll:[],
+  maritalStatusList:[],
+  countryList: [],
+  religionList: [],  
+  motherTongueList: []
 }
 
 // If you are not using async thunks you can use the standalone `createSlice`.
@@ -75,6 +88,14 @@ export const profileSlice = createAppSlice({
         state.filteredData = [];
         state.dashboardData = [];
         state.status = "failed";
+      })
+      .addMatcher(profilesApi.endpoints.filters.matchFulfilled, (state, action) => {        
+        state.casteListAll = action.payload.casteList;        
+        state.cityListAll = action.payload.cityList;        
+        state.maritalStatusList = action.payload.maritalStatus;
+        state.countryList = action.payload.country;        
+        state.religionList = action.payload.religion;        
+        state.motherTongueList = action.payload.motherTongueList;
       });
   },
   // You can define your selectors here. These selectors receive the slice
@@ -85,6 +106,12 @@ export const profileSlice = createAppSlice({
     selectFilteredData: profile => profile.filteredData,
     selectDashboardData: profile => profile.dashboardData,
     selectActiveProfile: profile => profile.activeProfile,
+    selectCasteListAll: profile => profile.casteListAll,
+    selectCityListAll: profile => profile.cityListAll,
+    selectMaritalStatusList: profile => profile.maritalStatusList,
+    selectCountryList: profile => profile.countryList,
+    selectReligionList: profile => profile.religionList,
+    selectMotherTongueList: profile => profile.motherTongueList
   },
 })
 
@@ -93,4 +120,4 @@ export const { sortByAge, updateResultData, filterDashbaordData, setDasboardActi
   profileSlice.actions
 
 // Selectors returned by `slice.selectors` take the root state as their first argument.
-export const { selectDasboardActivePage, selectResultData, selectFilteredData, selectDashboardData, selectActiveProfile } = profileSlice.selectors
+export const { selectDasboardActivePage, selectResultData, selectFilteredData, selectDashboardData, selectActiveProfile, selectCasteListAll, selectCityListAll, selectMaritalStatusList, selectCountryList, selectReligionList, selectMotherTongueList   } = profileSlice.selectors
