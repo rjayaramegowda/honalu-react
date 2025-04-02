@@ -1,15 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { Authuser } from "../../models/authuser.model";
+import iApp from "./firebaseauth";
+import { Link, useHref, useNavigate, useResolvedPath } from "react-router";
 
 const SignIn = () => {
   //SignIn
+  const a1 = iApp;
   const auth = getAuth();
+  let navigate = useNavigate();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isFailure, setIsFailure] = useState(false);
+  const [failureMsg, setFailureMsg] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
   const [authUser, setAuthUser] = useState<Authuser | null>();
 
@@ -24,11 +29,11 @@ const SignIn = () => {
         // ...
         return user;
       })
+      .then(() => navigate("profiles"))
       .catch((error) => {
         setIsFailure(true);
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorCode, errorMessage);
+        setFailureMsg(error.message);
+        console.log(error.code, error.message);
 
         return error;
       });
@@ -41,6 +46,10 @@ const SignIn = () => {
     setIsLoading(true);
     login(email, password);
   }
+
+  useEffect(() => {
+    return () => {};
+  }, []);
 
   return (
     <main className="form-signin m-auto mt-5" style={{ width: 350 }}>
@@ -65,7 +74,7 @@ const SignIn = () => {
           className={isFailure ? "alert alert-danger" : "d-none"}
           role="alert"
         >
-          Error: Invalid credential (Failure).
+          Error: {failureMsg}
         </div>
         <div className="form-floating mb-3">
           <input
@@ -103,11 +112,11 @@ const SignIn = () => {
         </button>
 
         <p className="mt-3 mb-3 text-body-secondary">
-          Don't have an account? <a href="./signup.html"> signup now</a>
+          Don't have an account? <Link to="signup"> signup now</Link>
         </p>
 
         <p className="mt-3 mb-5 text-body-secondary">
-          Forgot your password? <a href="./signup.html"> Reset password</a>
+          Forgot your password? <Link to="reset"> Reset password</Link>
         </p>
       </form>
     </main>

@@ -1,5 +1,6 @@
 import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 import React, { useState } from "react";
+import { Link } from "react-router";
 
 const Signup = () => {
   const auth = getAuth();
@@ -11,29 +12,33 @@ const Signup = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [isError, setIsError] = useState(false);
   const [isFailure, setIsFailure] = useState(false);
+  const [failureMsg, setFailureMsg] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
+  const [showBusy, setShowBusy] = useState(false);
 
   function signup() {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed up
         const user = userCredential.user;
-        console.log("user = ", user);
         setIsSuccess(true);
+        setIsFailure(false);
+        setShowBusy(false);
         // ...
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // ..
-        console.log("signup: errorCode ", errorCode);
-        console.log("signup: errorMessage ", errorMessage);
+        setIsFailure(true);
+        setIsSuccess(false);
+        setFailureMsg(error.code);
+        console.log("Error: ", error.code, error.message);
+        setShowBusy(false);
       });
   }
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (password === confirmPassword) {
+      setShowBusy(true);
       signup();
     } else {
       setIsFailure(true);
@@ -52,7 +57,7 @@ const Signup = () => {
           className={isFailure ? "alert alert-danger" : "d-none"}
           role="alert"
         >
-          Error! Email address is already in use.
+          Error! {failureMsg}
         </div>
         <div
           className={isSuccess ? "alert alert-success" : "d-none"}
@@ -144,15 +149,19 @@ const Signup = () => {
             .
           </label>
         </div>
-        <button className="btn btn-primary w-100 my-3" type="submit">
+        <button
+          disabled={showBusy}
+          className="btn btn-primary w-100 my-3"
+          type="submit"
+        >
           Signup
         </button>
 
         <p className="mt-4 mb-4 mb-3 text-body-secondary">
           Already have an account?
-          <a href="./signup.html" className="ps-2">
+          <Link to="/" className="ps-2">
             Sign In
-          </a>
+          </Link>
         </p>
       </form>
     </main>
