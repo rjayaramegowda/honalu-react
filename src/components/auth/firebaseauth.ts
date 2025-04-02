@@ -2,12 +2,12 @@ import React from "react";
 import { initializeApp } from "firebase/app";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBCvkBYmRdGSpcVOxDDMIWIaPSwSYioSo4",
-  authDomain: "honalu-react.firebaseapp.com",
-  projectId: "honalu-react",
-  storageBucket: "honalu-react.firebasestorage.app",
-  messagingSenderId: "704593316810",
-  appId: "1:704593316810:web:03ad1fb5e7b37b43199d33",
+  apiKey: import.meta.env.VITE_API_KEY,
+  authDomain: import.meta.env.VITE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_APP_ID,
 };
 
 // Initialize Firebase
