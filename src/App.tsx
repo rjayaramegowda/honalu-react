@@ -1,12 +1,14 @@
 import React from "react";
 import AppMain from "./AppMain";
 import { useProfilesQuery } from "./reducers/api/profilesApi";
+import Register from "./pages/register/Register";
 
 const App = () => {
-  const { data, error, isLoading, isFetching, isSuccess } = useProfilesQuery();
-
-  const showView = isSuccess ? <AppMain /> : <h1>Loading</h1>;
-  return <>{showView}</>;
+  return (
+    <main className="row">
+      <Register />
+    </main>
+  );
 };
 
 export default App;

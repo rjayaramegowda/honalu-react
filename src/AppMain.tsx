@@ -3,7 +3,7 @@ import Dashboard from "./pages/Dashboard";
 import ProfileDetailsPage from "./pages/ProfileDetailsPage";
 import ProfileListPage from "./pages/ProfileListPage";
 import Signup from "./components/auth/Signup";
-import Register from "./pages/Register";
+import Register from "./pages/register/Register";
 import SignIn from "./components/auth/SignIn";
 import ResetPassword from "./components/auth/ResetPassword";
 
