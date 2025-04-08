@@ -1,6 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
+import { Country, State, City } from "country-state-city";
 
 const CountryStateCity = () => {
+  const [selectedCountry, setSelectedCountry] = useState("IN");
+  const [selectedState, setSelectedState] = useState("KA");
+  const [countryList, setCountryList] = useState(Country.getAllCountries());
+  const [stateList, setstateList] = useState(
+    State.getStatesOfCountry(selectedCountry)
+  );
+  const [cityList, setCityList] = useState(
+    City.getCitiesOfState(selectedCountry, selectedState)
+  );
+
+  function handleCountryChange(e: React.ChangeEvent<HTMLSelectElement>) {
+    setstateList(State.getStatesOfCountry(e.target.value));
+    setSelectedCountry(e.target.value);
+    setCityList([]);
+  }
+
+  function handleStateChange(e: React.ChangeEvent<HTMLSelectElement>) {
+    setCityList(City.getCitiesOfState(selectedCountry, e.target.value));
+    setSelectedState(e.target.value);
+  }
+
   return (
     <>
       <div className="row mb-3">
@@ -8,9 +30,17 @@ const CountryStateCity = () => {
           Country Living In :
         </label>
         <div className="col-auto">
-          <select id="inputCountry" className="form-select">
-            <option>India</option>
-            <option>Germany</option>
+          <select
+            onChange={(e) => handleCountryChange(e)}
+            id="inputCountry"
+            className="form-select"
+            defaultValue="IN"
+          >
+            {countryList.map(({ name, isoCode }) => (
+              <option key={isoCode} value={isoCode}>
+                {name}
+              </option>
+            ))}
           </select>
         </div>
       </div>
@@ -19,10 +49,18 @@ const CountryStateCity = () => {
           State Living In :
         </label>
         <div className="col-auto">
-          <select id="inputState" className="form-select">
+          <select
+            onChange={(e) => handleStateChange(e)}
+            id="inputState"
+            className="form-select"
+            defaultValue="KA"
+          >
             <option>Choose...</option>
-            <option>Karnataka</option>
-            <option>Kerala</option>
+            {stateList.map(({ name, isoCode }) => (
+              <option key={isoCode} value={isoCode}>
+                {name}
+              </option>
+            ))}
           </select>
         </div>
       </div>
@@ -32,10 +70,17 @@ const CountryStateCity = () => {
           City Living In: ((Nearest City)
         </label>
         <div className="col-auto">
-          <select id="inputCity" className="form-select">
+          <select
+            id="inputCity"
+            className="form-select"
+            defaultValue="Chamarajanagar"
+          >
             <option>Choose...</option>
-            <option>Mysuru</option>
-            <option>Bengaluru</option>
+            {cityList.map(({ name }) => (
+              <option key={name} value={name}>
+                {name}
+              </option>
+            ))}
           </select>
         </div>
       </div>
