@@ -33,9 +33,11 @@ const CountryStateCity = () => {
           <select
             onChange={(e) => handleCountryChange(e)}
             id="inputCountry"
+            required
             className="form-select"
             defaultValue="IN"
           >
+            <option value="">Choose</option>
             {countryList.map(({ name, isoCode }) => (
               <option key={isoCode} value={isoCode}>
                 {name}
@@ -52,10 +54,11 @@ const CountryStateCity = () => {
           <select
             onChange={(e) => handleStateChange(e)}
             id="inputState"
+            required
             className="form-select"
             defaultValue="KA"
           >
-            <option>Choose...</option>
+            <option value="">Choose</option>
             {stateList.map(({ name, isoCode }) => (
               <option key={isoCode} value={isoCode}>
                 {name}
@@ -72,10 +75,11 @@ const CountryStateCity = () => {
         <div className="col-auto">
           <select
             id="inputCity"
+            required
             className="form-select"
             defaultValue="Chamarajanagar"
           >
-            <option>Choose...</option>
+            <option value="">Choose</option>
             {cityList.map(({ name }) => (
               <option key={name} value={name}>
                 {name}
