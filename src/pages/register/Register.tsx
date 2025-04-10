@@ -58,19 +58,23 @@ const Register = () => {
                     htmlFor="inputGender"
                     className="col-sm-4 col-form-label"
                   >
-                    Gender:
+                    Gender *:
                   </label>
                   <div className="col-auto">
-                    <select id="inputGender" className="form-select">
-                      <option>Choose...</option>
-                      <option>Male</option>
-                      <option>Female</option>
+                    <select
+                      id="inputGender"
+                      className="form-select"
+                      required={true}
+                    >
+                      <option disabled>Choose...</option>
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
                     </select>
                   </div>
                 </div>
                 <div className="row mb-3">
                   <label
-                    htmlFor="inputGender"
+                    htmlFor="inputCityDOB"
                     className="col-sm-4 col-form-label"
                   >
                     Date of Birth *:
@@ -79,29 +83,28 @@ const Register = () => {
                     <input
                       type="date"
                       name="party"
-                      min="1980-04-01"
+                      min="1970-04-01"
                       max="2007-04-20"
                       required={true}
                       className="form-control"
-                      id="inputCity"
+                      id="inputCityDOB"
                     />
                   </div>
                 </div>
                 <div className="row mb-3">
                   <label
-                    htmlFor="inputGender"
+                    htmlFor="inputMarital"
                     className="col-sm-4 col-form-label"
                   >
                     Marital Status *:
                   </label>
                   <div className="col-auto">
-                    <select id="inputGender" className="form-select">
-                      <option>Choose...</option>
-                      <option>Doesn't Matter</option>
-                      <option value={1}>Never Married</option>
-                      <option value={2}>Divorced</option>
-                      <option value={3}>Windowed</option>
-                      <option value={4}>Others</option>
+                    <select id="inputMarital" className="form-select">
+                      <option disabled>Choose...</option>
+                      <option value="Never Married">Never Married</option>
+                      <option value="Divorced">Divorced</option>
+                      <option value="Windowed">Windowed</option>
+                      <option value="Others">Others</option>
                     </select>
                   </div>
                 </div>
@@ -118,6 +121,8 @@ const Register = () => {
                       defaultValue=""
                       className="form-control"
                       id="inputCity"
+                      min={120}
+                      max={225}
                     />
                   </div>
                   <div className="col-auto">cm</div>
@@ -131,11 +136,10 @@ const Register = () => {
                   </label>
                   <div className="col-auto">
                     <select id="inputGender" className="form-select">
-                      <option>Choose...</option>
-                      <option>Doesn't Matter</option>
-                      <option>Veg</option>
-                      <option>Non-Veg-</option>
-                      <option>Eggetarian</option>
+                      <option disabled>Choose...</option>
+                      <option value="Veg">Veg</option>
+                      <option value="Non-Veg">Non-Veg</option>
+                      <option value="Eggetarian">Eggetarian</option>
                     </select>
                   </div>
                 </div>
