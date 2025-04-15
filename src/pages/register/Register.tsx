@@ -2,7 +2,11 @@ import React, { ChangeEvent, useState } from "react";
 import { useNavigate } from "react-router";
 import CountryStateCity from "./CountryStateCity";
 import { communityList, religionList } from "../../data/communityListData";
-import { motherTounge } from "../../data/commonData";
+import {
+  highestQualifications,
+  motherTounge,
+  workingTypes,
+} from "../../data/commonData";
 import { Community } from "../../models/common.model";
 
 const Register = () => {
@@ -21,6 +25,18 @@ const Register = () => {
   ));
 
   const motherToungeItems = motherTounge.map((item) => (
+    <option key={item} value={item}>
+      {item}
+    </option>
+  ));
+
+  const highestQualificationsItems = highestQualifications.map((item) => (
+    <option key={item} value={item}>
+      {item}
+    </option>
+  ));
+
+  const workingTypesItems = workingTypes.map((item) => (
     <option key={item} value={item}>
       {item}
     </option>
@@ -272,10 +288,23 @@ const Register = () => {
                         className="form-select"
                       >
                         <option value="">Choose...</option>
-                        <option>MBA</option>
-                        <option>BE</option>
-                        <option>MBBS</option>
+                        {highestQualificationsItems}
                       </select>
+                    </div>
+                  </div>
+                  <div className="row mb-3">
+                    <label
+                      htmlFor="inputAcademicRanks"
+                      className="col-sm-4 col-form-label"
+                    >
+                      Academic Ranks or Title
+                    </label>
+                    <div className="col-sm-7">
+                      <input
+                        placeholder="e.g. Bachelor in Engineering, Computer Science"
+                        className="form-control"
+                        id="inputAcademicRanks"
+                      />
                     </div>
                   </div>
                   <div className="row mb-3">
@@ -288,28 +317,55 @@ const Register = () => {
                     <div className="col-auto">
                       <select id="inputWorkingWith" className="form-select">
                         <option value="">Choose</option>
-                        <option>Private Company</option>
-                        <option>Govt</option>
-                        <option>Business / Self Employed</option>
-                        <option>Not Working</option>
+                        {workingTypesItems}
                       </select>
                     </div>
                   </div>
                   <div className="row mb-3">
                     <label
-                      htmlFor="inpuWorkingAs"
+                      htmlFor="inpuJobTitle"
                       className="col-sm-4 col-form-label"
                     >
-                      Working As:
+                      Job Title:
                     </label>
-                    <div className="col-auto">
-                      <select id="inpuWorkingAs" className="form-select">
-                        <option value="">Choose</option>
-                        <option>Human Resources Professional</option>
-                        <option>Banking Professional</option>
-                        <option>Software Developer</option>
-                        <option>Management</option>
-                      </select>
+                    <div className="col-sm-7">
+                      <input
+                        className="form-control"
+                        id="inpuJobTitle"
+                        placeholder="e.g. Software Development Engineer"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="row mb-3">
+                    <label
+                      htmlFor="inpuJobTitle"
+                      className="col-sm-4 col-form-label"
+                    >
+                      Company Name:
+                    </label>
+                    <div className="col-sm-7">
+                      <input
+                        className="form-control"
+                        id="inpuJobTitle"
+                        placeholder="e.g. Infosys"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="row mb-3">
+                    <label
+                      htmlFor="inpuJobTitle"
+                      className="col-sm-4 col-form-label"
+                    >
+                      Work Location:
+                    </label>
+                    <div className="col-sm-7">
+                      <input
+                        className="form-control"
+                        id="inpuJobTitle"
+                        placeholder="e.g. Bengaluru, Karnataka, India "
+                      />
                     </div>
                   </div>
                 </div>

@@ -68,3 +68,8 @@ export const motherTounge = [
     "Tagalog",    
     "Other",
   ];
+
+
+  export const highestQualifications = ["Doctorate", "Masters", "Bachelor or Undergraduate", "Associate or Diploma", "High School and below"];
+
+  export const workingTypes = ["Private Company", "Govt", "Business or Self Employed", "Not Working"];
