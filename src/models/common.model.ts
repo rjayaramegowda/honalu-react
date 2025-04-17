@@ -3,3 +3,9 @@ export interface Community {
     parent: string
   }
   
+  declare global {
+    interface Window {
+      cloudinary: any;
+    }
+  }
+  

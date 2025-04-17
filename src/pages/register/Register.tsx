@@ -302,7 +302,7 @@ const Register = () => {
 
                   <div className="row mb-3">
                     <label
-                      htmlFor="inpuJobTitle"
+                      htmlFor="inpuCompanyName"
                       className="col-sm-4 col-form-label"
                     >
                       Company Name:
@@ -310,7 +310,7 @@ const Register = () => {
                     <div className="col-sm-7">
                       <input
                         className="form-control"
-                        id="inpuJobTitle"
+                        id="inpuCompanyName"
                         placeholder="e.g. Infosys"
                       />
                     </div>
@@ -318,7 +318,7 @@ const Register = () => {
 
                   <div className="row mb-3">
                     <label
-                      htmlFor="inpuJobTitle"
+                      htmlFor="inpuWorkLocation"
                       className="col-sm-4 col-form-label"
                     >
                       Work Location:
@@ -326,7 +326,7 @@ const Register = () => {
                     <div className="col-sm-7">
                       <input
                         className="form-control"
-                        id="inpuJobTitle"
+                        id="inpuWorkLocation"
                         placeholder="e.g. Bengaluru, Karnataka, India "
                       />
                     </div>
