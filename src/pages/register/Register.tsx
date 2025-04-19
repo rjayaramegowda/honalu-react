@@ -9,6 +9,16 @@ import {
 } from "../../data/commonData";
 import { Community } from "../../models/common.model";
 import UploadImage from "./UploadImage";
+import {
+  Appearance,
+  Basic,
+  Doctrine,
+  Education,
+  Lifestyle,
+  Location,
+  Profession,
+  Profile,
+} from "../../models/profile.model";
 
 const Register = () => {
   const [communities, setCommunities] = useState<Community[]>([]);
@@ -51,6 +61,58 @@ const Register = () => {
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+  }
+
+  function createProfile() {
+    const basic: Basic = {
+      display_name: "Ravichandran Jayaramegowda",
+      gender: "Male",
+      age: "40",
+      date_of_birth: 19840507000000,
+      marital_status: "Never Married",
+    };
+
+    const appearance: Appearance = {
+      height: 168,
+    };
+
+    const lifestyle: Lifestyle = {
+      diet: "Non-Veg",
+    };
+
+    const doctrine: Doctrine = {
+      religion: "Hindu",
+      caste: "Brahmin - Iyer",
+      mother_tongue: "Kannada",
+    };
+
+    const location: Location = {
+      country: "India",
+      state: "Karnataka",
+      city: "Bengaluru",
+    };
+
+    const education: Education = {
+      education: "Masters",
+      display_education: "M.Ed - Master of Education",
+    };
+
+    const profession: Profession = {
+      working_with: "Private Company",
+      occupation: "Software Developer",
+      employer: "Infosys",
+    };
+
+    const p: Profile = {
+      basic,
+      appearance,
+      lifestyle,
+      doctrine,
+      location,
+      education,
+      profession,
+    };
+    console.log(p);
   }
 
   return (
@@ -289,7 +351,7 @@ const Register = () => {
                       htmlFor="inpuJobTitle"
                       className="col-sm-4 col-form-label"
                     >
-                      Job Title:
+                      Occupation or Job Title:
                     </label>
                     <div className="col-sm-7">
                       <input
@@ -302,32 +364,16 @@ const Register = () => {
 
                   <div className="row mb-3">
                     <label
-                      htmlFor="inpuCompanyName"
+                      htmlFor="inpuEmployer"
                       className="col-sm-4 col-form-label"
                     >
-                      Company Name:
+                      Employer:
                     </label>
                     <div className="col-sm-7">
                       <input
                         className="form-control"
-                        id="inpuCompanyName"
+                        id="inpuEmployer"
                         placeholder="e.g. Infosys"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="row mb-3">
-                    <label
-                      htmlFor="inpuWorkLocation"
-                      className="col-sm-4 col-form-label"
-                    >
-                      Work Location:
-                    </label>
-                    <div className="col-sm-7">
-                      <input
-                        className="form-control"
-                        id="inpuWorkLocation"
-                        placeholder="e.g. Bengaluru, Karnataka, India "
                       />
                     </div>
                   </div>
@@ -335,7 +381,8 @@ const Register = () => {
                 <div className="card-footer">
                   <button
                     className="btn btn-primary rounded-pill px-3"
-                    type="submit"
+                    type="button"
+                    onClick={createProfile}
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"

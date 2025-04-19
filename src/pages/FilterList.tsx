@@ -152,46 +152,46 @@ export const FilterList = (props: { vo: FiltersVO | null | undefined }) => {
 
   function filterFunction(p: Profile) {
     setsortDefaultValue("Choose");
-    if (Number(p.basic.age) < minAge || Number(p.basic.age) > maxAge) {
+    if (Number(p?.basic?.age) < minAge || Number(p?.basic?.age) > maxAge) {
       return false;
     }
     if (
-      p.basic.marital_status != maritalStatusRef.current &&
+      p.basic?.marital_status != maritalStatusRef.current &&
       maritalStatusRef.current != "Doesn't Matter"
     ) {
       return false;
     }
 
     if (
-      p.doctrine.religion != religionRef.current &&
+      p?.doctrine?.religion != religionRef.current &&
       religionRef.current != "Doesn't Matter"
     ) {
       return false;
     }
 
     if (
-      p.doctrine.caste != casteRef.current &&
+      p?.doctrine?.caste != casteRef.current &&
       casteRef.current != "Doesn't Matter"
     ) {
       return false;
     }
 
     if (
-      p.doctrine.mother_tongue != motherTongueRef.current &&
+      p?.doctrine?.mother_tongue != motherTongueRef.current &&
       motherTongueRef.current != "Doesn't Matter"
     ) {
       return false;
     }
 
     if (
-      p.location.country != countryRef.current &&
+      p?.location?.country != countryRef.current &&
       countryRef.current != "Doesn't Matter"
     ) {
       return false;
     }
 
     if (
-      p.location.city != cityRef.current &&
+      p?.location?.city != cityRef.current &&
       cityRef.current != "Doesn't Matter"
     ) {
       return false;
@@ -201,14 +201,17 @@ export const FilterList = (props: { vo: FiltersVO | null | undefined }) => {
   }
 
   function getSortedByAge(s1: Profile[]) {
-    return s1.sort((a: Profile, b: Profile) => {
-      return Number(a.basic.age) - Number(b.basic.age);
+    return s1.sort((a?: Profile, b?: Profile) => {
+      return Number(a?.basic?.age || 0) - Number(b?.basic?.age);
     });
   }
 
   function getSortedByProfileCreated(s1: Profile[]) {
     return s1.sort((a: Profile, b: Profile) => {
-      return b.account.profile_created - a.account.profile_created;
+      return (
+        Number(b?.account?.profile_created) -
+        Number(a?.account?.profile_created)
+      );
     });
   }
 
