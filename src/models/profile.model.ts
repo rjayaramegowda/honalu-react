@@ -1,6 +1,7 @@
 export type ProfileList = Profile[]
 
 export interface Profile {
+  id?: number
   account?: Account
   basic?: Basic
   trait?: Trait

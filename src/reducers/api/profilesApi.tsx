@@ -14,25 +14,25 @@ export const profilesApi = createApi({
     filters: builder.query<FiltersVO, void>({
       query: () => `/filters/`,
     }),
-    // deleteProfile: builder.mutation<void, number>({
-    //   query(id) {
-    //     return {
-    //       url: `profiles/${id}`,
-    //       method: "DELETE",
-    //     };
-    //   },
-    //   invalidatesTags: ["Profile"],
-    // }),
-    // addProfile: builder.mutation<void, Profile>({
-    //   query(profile) {
-    //     return {
-    //       url: `profiles`,
-    //       method: "POST",
-    //       body: profile,
-    //     };
-    //   },
-    //   invalidatesTags: ["Profile"],
-    // }),
+    deleteProfile: builder.mutation<void, number>({
+      query(id) {
+        return {
+          url: `profiles/${id}`,
+          method: "DELETE",
+        };
+      },
+      invalidatesTags: ["Profile"],
+    }),
+    addProfile: builder.mutation<void, Profile>({
+      query(profile) {
+        return {
+          url: `profiles`,
+          method: "POST",
+          body: profile,
+        };
+      },
+      invalidatesTags: ["Profile"],
+    }),
   }),
 });
 
@@ -41,5 +41,5 @@ export const {
   useFiltersQuery,
   // useProfileQuery,
   // useDeleteProfileMutation,
-  // useAddProfileMutation,
+  useAddProfileMutation,
 } = profilesApi;

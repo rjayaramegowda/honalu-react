@@ -19,8 +19,10 @@ import {
   Profession,
   Profile,
 } from "../../models/profile.model";
+import { useAddProfileMutation } from "../../reducers/api/profilesApi";
 
 const Register = () => {
+  const [addProfile] = useAddProfileMutation();
   const [communities, setCommunities] = useState<Community[]>([]);
 
   const communityListItems = communities.map(({ child, parent }) => (
@@ -68,7 +70,6 @@ const Register = () => {
       display_name: "Ravichandran Jayaramegowda",
       gender: "Male",
       age: "40",
-      date_of_birth: 19840507000000,
       marital_status: "Never Married",
     };
 
@@ -104,6 +105,7 @@ const Register = () => {
     };
 
     const p: Profile = {
+      id: 123,
       basic,
       appearance,
       lifestyle,
@@ -112,7 +114,7 @@ const Register = () => {
       education,
       profession,
     };
-    console.log(p);
+    addProfile(p);
   }
 
   return (
