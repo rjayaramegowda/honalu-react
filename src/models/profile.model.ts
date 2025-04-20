@@ -63,7 +63,7 @@ export interface HealthInfo {
 export interface Appearance {
   complexion?: string
   built?: string
-  height?: number
+  height?: number | string
   weight?: string
 }
 

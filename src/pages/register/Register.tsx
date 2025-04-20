@@ -1,6 +1,5 @@
 import React, { ChangeEvent, useState } from "react";
-import { useNavigate } from "react-router";
-import CountryStateCity from "./CountryStateCity";
+import { Country, State, City } from "country-state-city";
 import { communityList, religionList } from "../../data/communityListData";
 import {
   highestQualifications,
@@ -18,12 +17,33 @@ import {
   Location,
   Profession,
   Profile,
+  Trait,
 } from "../../models/profile.model";
 import { useAddProfileMutation } from "../../reducers/api/profilesApi";
 
 const Register = () => {
   const [addProfile] = useAddProfileMutation();
   const [communities, setCommunities] = useState<Community[]>([]);
+
+  const [displayName, setDisplayName] = useState("");
+  const [gender, setGender] = useState("");
+  const [age, setAge] = useState("");
+  const [maritalStatus, setMaritalStatus] = useState("");
+  const [dob, setDob] = useState("");
+  const [height, setHeight] = useState(0);
+  const [diet, setDiet] = useState("");
+  const [religion, setReligion] = useState("");
+  const [caste, setCaste] = useState("");
+  const [motherTongue, setMotherTongue] = useState("");
+  const [country, setCountry] = useState("");
+  const [state, setState] = useState("");
+  const [city, setCity] = useState("");
+  const [edu, setEdu] = useState("");
+  const [displayEducation, setDisplayEducation] = useState("");
+  const [workingWith, setWorkingWith] = useState("");
+  const [occupation, setOccupation] = useState("");
+  const [employer, setEmployer] = useState("");
+  const [aboutMe, setAboutMe] = useState("");
 
   const communityListItems = communities.map(({ child, parent }) => (
     <option key={child} value={child}>
@@ -59,49 +79,56 @@ const Register = () => {
     setCommunities(
       communityList.filter((item) => item.parent === e.target.value)
     );
+    setReligion(e.target.value);
   }
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    //createProfile();
   }
 
   function createProfile() {
     const basic: Basic = {
-      display_name: "Ravichandran Jayaramegowda",
-      gender: "Male",
-      age: "40",
-      marital_status: "Never Married",
+      display_name: displayName,
+      gender: gender,
+      age: age,
+      marital_status: maritalStatus,
+      date_of_birth: dob,
     };
 
     const appearance: Appearance = {
-      height: 168,
+      height: height,
     };
 
     const lifestyle: Lifestyle = {
-      diet: "Non-Veg",
+      diet: diet,
     };
 
     const doctrine: Doctrine = {
-      religion: "Hindu",
-      caste: "Brahmin - Iyer",
-      mother_tongue: "Kannada",
+      religion: religion,
+      caste: caste,
+      mother_tongue: motherTongue,
     };
 
     const location: Location = {
-      country: "India",
-      state: "Karnataka",
-      city: "Bengaluru",
+      country: country,
+      state: state,
+      city: city,
     };
 
     const education: Education = {
-      education: "Masters",
-      display_education: "M.Ed - Master of Education",
+      education: edu,
+      display_education: displayEducation,
     };
 
     const profession: Profession = {
-      working_with: "Private Company",
-      occupation: "Software Developer",
-      employer: "Infosys",
+      working_with: workingWith,
+      occupation: occupation,
+      employer: employer,
+    };
+
+    const trait: Trait = {
+      about_me: aboutMe,
     };
 
     const p: Profile = {
@@ -113,8 +140,32 @@ const Register = () => {
       location,
       education,
       profession,
+      trait,
     };
     addProfile(p);
+  }
+
+  const [selectedCountry, setSelectedCountry] = useState("IN");
+  const [selectedState, setSelectedState] = useState("KA");
+  const [countryList, setCountryList] = useState(Country.getAllCountries());
+  const [stateList, setstateList] = useState(
+    State.getStatesOfCountry(selectedCountry)
+  );
+  const [cityList, setCityList] = useState(
+    City.getCitiesOfState(selectedCountry, selectedState)
+  );
+
+  function handleCountryChange(e: React.ChangeEvent<HTMLSelectElement>) {
+    setstateList(State.getStatesOfCountry(e.target.value));
+    setSelectedCountry(e.target.value);
+    setCityList([]);
+    setCountry(e.target.selectedOptions[0].label);
+  }
+
+  function handleStateChange(e: React.ChangeEvent<HTMLSelectElement>) {
+    setCityList(City.getCitiesOfState(selectedCountry, e.target.value));
+    setSelectedState(e.target.value);
+    setState(e.target.selectedOptions[0].label);
   }
 
   return (
@@ -132,6 +183,23 @@ const Register = () => {
                   <h5 className="card-title">Basic Details</h5>
                   <div className="row mb-3">
                     <label
+                      htmlFor="inputDisplayName"
+                      className="col-sm-4 col-form-label"
+                    >
+                      Full Name:
+                    </label>
+                    <div className="col-sm-7">
+                      <input
+                        className="form-control"
+                        id="inputDisplayName"
+                        placeholder="Enter your fullname"
+                        onChange={(e) => setDisplayName(e.target.value)}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="row mb-3">
+                    <label
                       htmlFor="inputGender"
                       className="col-sm-4 col-form-label"
                     >
@@ -142,6 +210,7 @@ const Register = () => {
                         id="inputGender"
                         className="form-select"
                         required={true}
+                        onChange={(e) => setGender(e.target.value)}
                       >
                         <option value="">Choose</option>
                         <option value="Male">Male</option>
@@ -165,8 +234,30 @@ const Register = () => {
                         required={true}
                         className="form-control"
                         id="inputCityDOB"
+                        onChange={(e) => setDob(e.target.value)}
                       />
                     </div>
+                  </div>
+                  <div className="row mb-3">
+                    <label
+                      htmlFor="inputAge"
+                      className="col-sm-4 col-form-label"
+                    >
+                      Age *:
+                    </label>
+                    <div className="col-auto">
+                      <input
+                        type="number"
+                        defaultValue=""
+                        className="form-control"
+                        id="inputAge"
+                        required
+                        min={18}
+                        max={80}
+                        onChange={(e) => setAge(e.target.value)}
+                      />
+                    </div>
+                    <div className="col-auto">Years</div>
                   </div>
                   <div className="row mb-3">
                     <label
@@ -180,6 +271,7 @@ const Register = () => {
                         required
                         id="inputMarital"
                         className="form-select"
+                        onChange={(e) => setMaritalStatus(e.target.value)}
                       >
                         <option value="">Choose</option>
                         <option value="Never Married">Never Married</option>
@@ -205,6 +297,7 @@ const Register = () => {
                         required
                         min={120}
                         max={225}
+                        onChange={(e) => setHeight(Number(e.target.value))}
                       />
                     </div>
                     <div className="col-auto">cm</div>
@@ -217,7 +310,12 @@ const Register = () => {
                       Diet *:
                     </label>
                     <div className="col-auto">
-                      <select required id="inputDiet" className="form-select">
+                      <select
+                        required
+                        id="inputDiet"
+                        className="form-select"
+                        onChange={(e) => setDiet(e.target.value)}
+                      >
                         <option value="">Choose</option>
                         <option value="Veg">Veg</option>
                         <option value="Non-Veg">Non-Veg</option>
@@ -256,6 +354,7 @@ const Register = () => {
                         id="inputCommunity"
                         required
                         className="form-select"
+                        onChange={(e) => setCaste(e.target.value)}
                       >
                         <option value="">Choose</option>
                         {communityListItems}
@@ -274,13 +373,86 @@ const Register = () => {
                         required
                         id="inputMotherTongue"
                         className="form-select"
+                        onChange={(e) => setMotherTongue(e.target.value)}
                       >
                         <option value="">Choose</option>
                         {motherToungeItems}
                       </select>
                     </div>
                   </div>
-                  <CountryStateCity />
+                  <div className="row mb-3">
+                    <label
+                      htmlFor="inputCountry"
+                      className="col-sm-4 col-form-label"
+                    >
+                      Country Living In :
+                    </label>
+                    <div className="col-auto">
+                      <select
+                        onChange={(e) => handleCountryChange(e)}
+                        id="inputCountry"
+                        required
+                        className="form-select"
+                        defaultValue="IN"
+                      >
+                        <option value="">Choose</option>
+                        {countryList.map(({ name, isoCode }) => (
+                          <option key={isoCode} value={isoCode}>
+                            {name}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
+                  <div className="row mb-3">
+                    <label
+                      htmlFor="inputState"
+                      className="col-sm-4 col-form-label"
+                    >
+                      State Living In :
+                    </label>
+                    <div className="col-auto">
+                      <select
+                        onChange={(e) => handleStateChange(e)}
+                        id="inputState"
+                        required
+                        className="form-select"
+                        defaultValue="KA"
+                      >
+                        <option value="">Choose</option>
+                        {stateList.map(({ name, isoCode }) => (
+                          <option key={isoCode} value={isoCode}>
+                            {name}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
+
+                  <div className="row mb-3">
+                    <label
+                      htmlFor="inputCity"
+                      className="col-sm-4 col-form-label"
+                    >
+                      City Living In: ((Nearest City)
+                    </label>
+                    <div className="col-auto">
+                      <select
+                        id="inputCity"
+                        required
+                        className="form-select"
+                        defaultValue="Chamarajanagar"
+                        onChange={(e) => setCity(e.target.value)}
+                      >
+                        <option value="">Choose</option>
+                        {cityList.map(({ name }) => (
+                          <option key={name} value={name}>
+                            {name}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -293,6 +465,7 @@ const Register = () => {
                     className="form-control"
                     id="inputAboutMe"
                     rows={5}
+                    onChange={(e) => setAboutMe(e.target.value)}
                   />
                 </div>
               </div>
@@ -313,6 +486,7 @@ const Register = () => {
                         id="inputEducation"
                         required
                         className="form-select"
+                        onChange={(e) => setEdu(e.target.value)}
                       >
                         <option value="">Choose...</option>
                         {highestQualificationsItems}
@@ -331,6 +505,7 @@ const Register = () => {
                         placeholder="e.g. Bachelor in Engineering, Computer Science"
                         className="form-control"
                         id="inputAcademicRanks"
+                        onChange={(e) => setDisplayEducation(e.target.value)}
                       />
                     </div>
                   </div>
@@ -342,7 +517,11 @@ const Register = () => {
                       Working With:
                     </label>
                     <div className="col-auto">
-                      <select id="inputWorkingWith" className="form-select">
+                      <select
+                        id="inputWorkingWith"
+                        className="form-select"
+                        onChange={(e) => setWorkingWith(e.target.value)}
+                      >
                         <option value="">Choose</option>
                         {workingTypesItems}
                       </select>
@@ -360,6 +539,7 @@ const Register = () => {
                         className="form-control"
                         id="inpuJobTitle"
                         placeholder="e.g. Software Development Engineer"
+                        onChange={(e) => setOccupation(e.target.value)}
                       />
                     </div>
                   </div>
@@ -376,6 +556,7 @@ const Register = () => {
                         className="form-control"
                         id="inpuEmployer"
                         placeholder="e.g. Infosys"
+                        onChange={(e) => setEmployer(e.target.value)}
                       />
                     </div>
                   </div>
