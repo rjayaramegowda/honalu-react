@@ -20,6 +20,7 @@ import {
   Trait,
 } from "../../models/profile.model";
 import { useAddProfileMutation } from "../../reducers/api/profilesApi";
+import CountryStateCity from "./CountryStateCity";
 
 const Register = () => {
   const [addProfile] = useAddProfileMutation();
@@ -35,8 +36,8 @@ const Register = () => {
   const [religion, setReligion] = useState("");
   const [caste, setCaste] = useState("");
   const [motherTongue, setMotherTongue] = useState("");
-  const [country, setCountry] = useState("");
-  const [state, setState] = useState("");
+  const [country, setCountry] = useState("India");
+  const [state, setState] = useState("Karnataka");
   const [city, setCity] = useState("");
   const [edu, setEdu] = useState("");
   const [displayEducation, setDisplayEducation] = useState("");
@@ -143,29 +144,6 @@ const Register = () => {
       trait,
     };
     addProfile(p);
-  }
-
-  const [selectedCountry, setSelectedCountry] = useState("IN");
-  const [selectedState, setSelectedState] = useState("KA");
-  const [countryList, setCountryList] = useState(Country.getAllCountries());
-  const [stateList, setstateList] = useState(
-    State.getStatesOfCountry(selectedCountry)
-  );
-  const [cityList, setCityList] = useState(
-    City.getCitiesOfState(selectedCountry, selectedState)
-  );
-
-  function handleCountryChange(e: React.ChangeEvent<HTMLSelectElement>) {
-    setstateList(State.getStatesOfCountry(e.target.value));
-    setSelectedCountry(e.target.value);
-    setCityList([]);
-    setCountry(e.target.selectedOptions[0].label);
-  }
-
-  function handleStateChange(e: React.ChangeEvent<HTMLSelectElement>) {
-    setCityList(City.getCitiesOfState(selectedCountry, e.target.value));
-    setSelectedState(e.target.value);
-    setState(e.target.selectedOptions[0].label);
   }
 
   return (
@@ -380,7 +358,13 @@ const Register = () => {
                       </select>
                     </div>
                   </div>
-                  <div className="row mb-3">
+
+                  <CountryStateCity
+                    onCityChange={(c) => setCity(c)}
+                    onCountryChange={(c) => setCountry(c)}
+                    onStateChange={(s) => setState(s)}
+                  />
+                  {/* <div className="row mb-3">
                     <label
                       htmlFor="inputCountry"
                       className="col-sm-4 col-form-label"
@@ -452,7 +436,7 @@ const Register = () => {
                         ))}
                       </select>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>

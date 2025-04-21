@@ -1,7 +1,15 @@
 import React, { useState } from "react";
 import { Country, State, City } from "country-state-city";
 
-const CountryStateCity = () => {
+interface ICountryStateCityProps {
+  onCountryChange: (country: string) => void;
+  onStateChange: (state: string) => void;
+  onCityChange: (city: string) => void;
+}
+
+const CountryStateCity: React.FunctionComponent<ICountryStateCityProps> = (
+  props
+) => {
   const [selectedCountry, setSelectedCountry] = useState("IN");
   const [selectedState, setSelectedState] = useState("KA");
   const [countryList, setCountryList] = useState(Country.getAllCountries());
@@ -16,11 +24,13 @@ const CountryStateCity = () => {
     setstateList(State.getStatesOfCountry(e.target.value));
     setSelectedCountry(e.target.value);
     setCityList([]);
+    props.onCountryChange(e.target.selectedOptions[0].label);
   }
 
   function handleStateChange(e: React.ChangeEvent<HTMLSelectElement>) {
     setCityList(City.getCitiesOfState(selectedCountry, e.target.value));
     setSelectedState(e.target.value);
+    props.onStateChange(e.target.selectedOptions[0].label);
   }
 
   return (
@@ -77,7 +87,8 @@ const CountryStateCity = () => {
             id="inputCity"
             required
             className="form-select"
-            defaultValue="Chamarajanagar"
+            defaultValue=""
+            onChange={(e) => props.onCityChange(e.target.value)}
           >
             <option value="">Choose</option>
             {cityList.map(({ name }) => (
