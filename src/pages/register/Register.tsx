@@ -15,6 +15,8 @@ import {
   Education,
   Lifestyle,
   Location,
+  Photo,
+  PhotoDetails,
   Profession,
   Profile,
   Trait,
@@ -45,6 +47,7 @@ const Register = () => {
   const [occupation, setOccupation] = useState("");
   const [employer, setEmployer] = useState("");
   const [aboutMe, setAboutMe] = useState("");
+  const [phtoURL, setPhtoURL] = useState("");
 
   const communityListItems = communities.map(({ child, parent }) => (
     <option key={child} value={child}>
@@ -132,6 +135,14 @@ const Register = () => {
       about_me: aboutMe,
     };
 
+    const photo: Photo = {
+      medium: phtoURL,
+    };
+
+    const photo_details: PhotoDetails = {
+      photos: [photo],
+    };
+
     const p: Profile = {
       id: 123,
       basic,
@@ -142,6 +153,7 @@ const Register = () => {
       education,
       profession,
       trait,
+      photo_details,
     };
     addProfile(p);
   }
@@ -149,7 +161,7 @@ const Register = () => {
   return (
     <>
       <div className="col-md-3 mb-3 mt-1">
-        <UploadImage />
+        <UploadImage onPhotoUpload={(url) => setPhtoURL(url)} />
       </div>
       <div className="col-md-9">
         <form onSubmit={(e) => handleSubmit(e)} xvpn-watching-form="true">

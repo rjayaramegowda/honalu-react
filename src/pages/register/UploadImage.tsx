@@ -1,9 +1,14 @@
 import { useState } from "react";
 import UploadWidget from "./UploadWidget";
+import { IMG_PROFILE, IMG_URL } from "../../data/commonData";
 
-const UploadImage = () => {
+interface IUploadImageProps {
+  onPhotoUpload: (country: string) => void;
+}
+
+const UploadImage: React.FunctionComponent<IUploadImageProps> = (props) => {
   const [url, updateUrl] = useState(
-    "https://res.cloudinary.com/dyv5ztkkq/image/upload/v1744895278/d1nkhmvfamrm6k2xrjnj.png"
+    IMG_URL + IMG_PROFILE + "/v1745338879/yx1heemh74kxdqnhduix.jpg"
   );
 
   /**
@@ -19,7 +24,11 @@ const UploadImage = () => {
       });
       return;
     }
+
+    const pic_url = result?.info?.secure_url;
+
     updateUrl(result?.info?.secure_url);
+    props.onPhotoUpload(pic_url.split("upload")[1]);
   }
 
   return (
@@ -33,8 +42,6 @@ const UploadImage = () => {
           top: "auto",
         }}
       >
-        <h5 className="card-title mt-5 pt-2 text-center">Dayanand</h5>
-
         <div className="text-center">
           <UploadWidget onUpload={handleOnUpload}>
             {({ open }) => {

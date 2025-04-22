@@ -3,19 +3,19 @@ export type ProfileList = Profile[]
 export interface Profile {
   id?: number
   account?: Account
-  basic?: Basic
-  trait?: Trait
+  basic: Basic
+  trait: Trait
   health_info?: HealthInfo
   appearance?: Appearance
   lifestyle?: Lifestyle
-  doctrine?: Doctrine
-  location?: Location
+  doctrine: Doctrine
+  location: Location
   education?: Education
   profession?: Profession
   family?: Family
   origin?: Origin
   interests_and_more?: InterestsAndMore
-  photo_details?: PhotoDetails
+  photo_details: PhotoDetails
   connect?: Connect
   other?: Other
   notifications?: Notifications
@@ -39,13 +39,13 @@ export interface Account {
 
 export interface Basic {
   username?: string
-  display_name?: string
+  display_name: string
   first_name?: string
   last_name?: string
-  gender?: string
-  age?: string
-  marital_status?: string
-  date_of_birth?: number | string
+  gender: string
+  age: string
+  marital_status: string
+  date_of_birth: number | string
 }
 
 export interface Trait {
@@ -74,10 +74,10 @@ export interface Lifestyle {
 }
 
 export interface Doctrine {
-  religion?: string
-  caste?: string
+  religion: string
+  caste: string
   sub_caste?: string
-  mother_tongue?: string
+  mother_tongue: string
   gotra?: string
   amritdhari?: string
   dastar?: string
@@ -91,15 +91,15 @@ export interface Doctrine {
 }
 
 export interface Location {
-  country?: string
-  state?: string
-  district?: string
+  country: string
+  state: string
+  district: string
   residency_status?: string
   zip_code?: string
   country_code?: string
   city_google?: string
   living_since?: string
-  city?: string
+  city: string
   locality?: string
   location?: string
   lives_in?: string
@@ -173,7 +173,7 @@ export interface InterestsAndMore {
 
 export interface PhotoDetails {
   count?: number
-  photos?: Photo[]
+  photos: Photo[]
   status?: string
 }
 
@@ -181,7 +181,7 @@ export interface Photo {
     status?: string
     photo_order?: number
     profile_photo?: boolean
-    medium?: string
+    medium: string
     medium_nb?: string
     semilarge?: string
     semilarge_nb?: string

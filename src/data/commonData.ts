@@ -73,3 +73,6 @@ export const motherTounge = [
   export const highestQualifications = ["Doctorate", "Masters", "Bachelor or Undergraduate", "Associate or Diploma", "High School and below"];
 
   export const workingTypes = ["Private Company", "Govt", "Business or Self Employed", "Not Working"];
+
+export const IMG_URL = "https://res.cloudinary.com/dyv5ztkkq/image/upload";
+export const IMG_PROFILE = "/t_3x4";

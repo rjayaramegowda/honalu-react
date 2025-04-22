@@ -4,12 +4,13 @@ import { Profile } from "../models/profile.model";
 import { useAppDispatch } from "../app/hooks";
 import { setActiveProfile } from "../reducers/slice/profilesSlice";
 import { Link } from "react-router";
+import { IMG_PROFILE, IMG_URL } from "../data/commonData";
 
 ProfileCard.propTypes = {
   vo: any,
 };
 
-function ProfileCard(props: { vo: Profile | null | undefined }) {
+function ProfileCard(props: { vo: Profile }) {
   const dispatch = useAppDispatch();
 
   function hancleClick() {
@@ -20,7 +21,7 @@ function ProfileCard(props: { vo: Profile | null | undefined }) {
       {/* Profile Begins*/}
       <div className="card text-bg-dark border-0 mb-4">
         <img
-          src={props.vo?.photo_details.photos[0].medium}
+          src={IMG_URL + IMG_PROFILE + props.vo?.photo_details.photos[0].medium}
           className="card-img"
           alt="..."
         />
@@ -32,13 +33,12 @@ function ProfileCard(props: { vo: Profile | null | undefined }) {
           }}
         >
           <h5 className="card-title mt-5 pt-2">
-            {props.vo?.basic.display_name}
+            {props.vo.basic.display_name}
           </h5>
           <p className="card-text mb-1">
-            {props.vo?.basic.age} Yrs, {props.vo?.doctrine.religion},{" "}
-            {props.vo?.doctrine.caste}, {props.vo?.doctrine.mother_tongue},{" "}
-            <br />
-            {props.vo?.location.location}
+            {props.vo.basic.age} Yrs, {props.vo.doctrine.religion},{" "}
+            {props.vo.doctrine.caste}, {props.vo.doctrine.mother_tongue}, <br />
+            {props.vo.location.location}
           </p>
           <div className="text-center">
             <Link
