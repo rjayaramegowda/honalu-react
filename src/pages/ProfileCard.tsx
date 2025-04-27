@@ -42,7 +42,7 @@ function ProfileCard(props: { vo: Profile }) {
           </p>
           <div className="text-center">
             <Link
-              to="./details"
+              to="../details"
               className="btn btn-success rounded-pill px-5"
               type="button"
               onClick={hancleClick}

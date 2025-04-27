@@ -23,12 +23,16 @@ import {
 } from "../../models/profile.model";
 import { useAddProfileMutation } from "../../reducers/api/profilesApi";
 import CountryStateCity from "./CountryStateCity";
+import { selectAuthuser } from "../../reducers/slice/profilesSlice";
+import { useAppSelector } from "../../app/hooks";
 
 const Register = () => {
   const [addProfile] = useAddProfileMutation();
+  const authuser = useAppSelector(selectAuthuser);
   const [communities, setCommunities] = useState<Community[]>([]);
 
   const [displayName, setDisplayName] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
   const [gender, setGender] = useState("");
   const [age, setAge] = useState("");
   const [maritalStatus, setMaritalStatus] = useState("");
@@ -98,6 +102,8 @@ const Register = () => {
       age: age,
       marital_status: maritalStatus,
       date_of_birth: dob,
+      phone_number: phoneNumber,
+      email: authuser?.email,
     };
 
     const appearance: Appearance = {
@@ -118,6 +124,7 @@ const Register = () => {
       country: country,
       state: state,
       city: city,
+      location: city + ", " + country,
     };
 
     const education: Education = {
@@ -144,7 +151,7 @@ const Register = () => {
     };
 
     const p: Profile = {
-      id: 123,
+      id: authuser.uid,
       basic,
       appearance,
       lifestyle,
@@ -184,6 +191,23 @@ const Register = () => {
                         id="inputDisplayName"
                         placeholder="Enter your fullname"
                         onChange={(e) => setDisplayName(e.target.value)}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="row mb-3">
+                    <label
+                      htmlFor="inputPhoneNumber"
+                      className="col-sm-4 col-form-label"
+                    >
+                      Phone Number:
+                    </label>
+                    <div className="col-sm-7">
+                      <input
+                        className="form-control"
+                        id="inputPhoneNumber"
+                        placeholder="e.g +91 9886 123456"
+                        onChange={(e) => setPhoneNumber(e.target.value)}
                       />
                     </div>
                   </div>
@@ -238,7 +262,6 @@ const Register = () => {
                     <div className="col-auto">
                       <input
                         type="number"
-                        defaultValue=""
                         className="form-control"
                         id="inputAge"
                         required
@@ -281,7 +304,6 @@ const Register = () => {
                     <div className="col-auto">
                       <input
                         type="number"
-                        defaultValue=""
                         className="form-control"
                         id="inputHeight"
                         required

@@ -10,7 +10,10 @@ UserListCol.propTypes = {};
 function UserListCol() {
   const dataProvider = useAppSelector(selectFilteredData);
   const listItems = dataProvider.map((vo: Profile) => (
-    <ProfileCard vo={vo} key={vo.basic.display_name + vo.basic.username} />
+    <ProfileCard
+      vo={vo}
+      key={vo.basic.display_name + vo.basic.username + vo.id}
+    />
   ));
 
   return (

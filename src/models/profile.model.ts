@@ -46,6 +46,9 @@ export interface Basic {
   age: string
   marital_status: string
   date_of_birth: number | string
+  email?: string
+  phone_number?: string
+  photo_URL?: string
 }
 
 export interface Trait {
@@ -93,7 +96,7 @@ export interface Doctrine {
 export interface Location {
   country: string
   state: string
-  district: string
+  district?: string
   residency_status?: string
   zip_code?: string
   country_code?: string

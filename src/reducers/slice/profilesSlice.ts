@@ -3,6 +3,7 @@ import { createAppSlice } from "../../app/createAppSlice"
 import { Profile } from "../../models/profile.model"
 import { profilesApi } from "../api/profilesApi";
 import { CasteList, CityList } from "../../models/fileters.model";
+import { Authuser } from "../../models/authuser.model";
 
 export interface ProfileSliceState {
   dasboardActivePage: "Recieved" | "Sent" | "Declined" | "Accepted" | "Connect",
@@ -17,6 +18,7 @@ export interface ProfileSliceState {
   countryList: any,
   religionList: any,  
   motherTongueList: any
+  authuser:any
 }
 
 const initialState: ProfileSliceState = {
@@ -31,7 +33,8 @@ const initialState: ProfileSliceState = {
   maritalStatusList:[],
   countryList: [],
   religionList: [],  
-  motherTongueList: []
+  motherTongueList: [],
+  authuser: null
 }
 
 // If you are not using async thunks you can use the standalone `createSlice`.
@@ -67,8 +70,11 @@ export const profileSlice = createAppSlice({
         state.activeProfile = action.payload
       },
     ),
-
-
+    setAuthuser: create.reducer(
+      (state, action: PayloadAction<Authuser>) => {
+        state.authuser = action.payload
+      },
+    ),
   }),
   //API
   extraReducers: (builder) => {
@@ -111,13 +117,14 @@ export const profileSlice = createAppSlice({
     selectMaritalStatusList: profile => profile.maritalStatusList,
     selectCountryList: profile => profile.countryList,
     selectReligionList: profile => profile.religionList,
-    selectMotherTongueList: profile => profile.motherTongueList
+    selectMotherTongueList: profile => profile.motherTongueList,
+    selectAuthuser: profile => profile.authuser
   },
 })
 
 // Action creators are generated for each case reducer function.
-export const { sortByAge, updateResultData, filterDashbaordData, setDasboardActivePage, setActiveProfile } =
+export const { sortByAge, updateResultData, filterDashbaordData, setDasboardActivePage, setActiveProfile, setAuthuser } =
   profileSlice.actions
 
 // Selectors returned by `slice.selectors` take the root state as their first argument.
-export const { selectDasboardActivePage, selectResultData, selectFilteredData, selectDashboardData, selectActiveProfile, selectCasteListAll, selectCityListAll, selectMaritalStatusList, selectCountryList, selectReligionList, selectMotherTongueList   } = profileSlice.selectors
+export const { selectDasboardActivePage, selectResultData, selectFilteredData, selectDashboardData, selectActiveProfile, selectCasteListAll, selectCityListAll, selectMaritalStatusList, selectCountryList, selectReligionList, selectMotherTongueList, selectAuthuser   } = profileSlice.selectors

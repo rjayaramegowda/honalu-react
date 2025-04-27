@@ -1,23 +1,23 @@
 export interface Authuser {
-    uid: string
-    email: string
-    emailVerified: boolean
-    isAnonymous: boolean
-    providerData: ProviderDaum[]
-    stsTokenManager: StsTokenManager
-    createdAt: string
-    lastLoginAt: string
-    apiKey: string
-    appName: string
+    uid?: string
+    email?: string
+    emailVerified?: boolean
+    isAnonymous?: boolean
+    providerData?: ProviderDaum[]
+    stsTokenManager?: StsTokenManager
+    createdAt?: string
+    lastLoginAt?: string
+    apiKey?: string
+    appName?: string
   }
   
   export interface ProviderDaum {
-    providerId: string
-    uid: string
-    displayName: any
-    email: string
-    phoneNumber: any
-    photoURL: any
+    providerId?: string
+    uid?: string
+    displayName?: any
+    email?: string
+    phoneNumber?: any
+    photoURL?: any
   }
   
   export interface StsTokenManager {
