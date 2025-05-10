@@ -1,10 +1,14 @@
 import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 import React, { useState } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
+import { Authuser } from "../../models/authuser.model";
+import { useAppDispatch } from "../../app/hooks";
+import { setAuthuser } from "../../reducers/slice/profilesSlice";
 
 const Signup = () => {
   const auth = getAuth();
 
+  const dispatch = useAppDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [displayName, setDisplayName] = useState("");
@@ -15,12 +19,15 @@ const Signup = () => {
   const [failureMsg, setFailureMsg] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
   const [showBusy, setShowBusy] = useState(false);
+  const [user, setUser] = useState();
 
   function signup() {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed up
         const user = userCredential.user;
+        //console.log("Signup] signup() user = ", user);
+        updateAuthUser(user.uid, user.email);
         setIsSuccess(true);
         setIsFailure(false);
         setShowBusy(false);
@@ -33,6 +40,14 @@ const Signup = () => {
         console.log("Error: ", error.code, error.message);
         setShowBusy(false);
       });
+  }
+
+  let navigate = useNavigate();
+  function updateAuthUser(uid: string, email: any) {
+    console.log("uid = ", uid);
+    const au: Authuser = { uid, email };
+    dispatch(setAuthuser(au));
+    navigate("../register");
   }
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -137,7 +152,6 @@ const Signup = () => {
           <input
             className="form-check-input"
             type="checkbox"
-            defaultValue="remember-me"
             id="flexCheckDefault"
           />
           <label className="form-check-label" htmlFor="flexCheckDefault">

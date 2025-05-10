@@ -13,6 +13,7 @@ import {
 import { useAppDispatch, useAppSelector } from "../app/hooks";
 import { connect } from "react-redux";
 import { Link } from "react-router";
+import { IMG_PROFILE, IMG_URL } from "../data/commonData";
 
 const ProfileCard2 = (props: { vo: Profile | null | undefined }) => {
   const dispatch = useAppDispatch();
@@ -52,7 +53,9 @@ const ProfileCard2 = (props: { vo: Profile | null | undefined }) => {
       <div className="row g-0">
         <div className="col-4 col-md-3">
           <img
-            src={props.vo?.photo_details.photos[0].medium}
+            src={
+              IMG_URL + IMG_PROFILE + props.vo?.photo_details.photos[0].medium
+            }
             className="img-fluid rounded p-1 pt-2 p-md-3 ms-1"
             alt="..."
           />

@@ -1,12 +1,13 @@
 import React from "react";
 import PropTypes, { any } from "prop-types";
 import { Profile } from "../models/profile.model";
+import { IMG_PROFILE, IMG_URL } from "../data/commonData";
 
 const ProfileDetailsLeftCol = (props: { vo: Profile | null | undefined }) => {
   return (
     <div className="card text-bg-dark border-0 mb-4">
       <img
-        src={props.vo?.photo_details.photos[0].medium}
+        src={IMG_URL + IMG_PROFILE + props.vo?.photo_details.photos[0].medium}
         className="card-img"
         alt={props.vo?.basic.display_name}
       />
