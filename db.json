@@ -1,25 +1,9 @@
 {
   "filters": {
-    "country": [
-      "India",
-      "USA"
-    ],
-    "religion": [
-      "Hindu",
-      "Christian",
-      "Muslim"
-    ],
-    "maritalStatus": [
-      "Never Married",
-      "Divorced",
-      "Widowed"
-    ],
-    "motherTongueList": [
-      "Kannada",
-      "Malayalam",
-      "Marathi",
-      "Telugu"
-    ],
+    "country": ["India", "USA"],
+    "religion": ["Hindu", "Christian", "Muslim"],
+    "maritalStatus": ["Never Married", "Divorced", "Widowed"],
+    "motherTongueList": ["Kannada", "Malayalam", "Marathi", "Telugu"],
     "cityList": [
       {
         "city": "Bengaluru",
@@ -85,9 +69,7 @@
         "profile_created": 20210525215110,
         "profile_activated": 20210531180651,
         "posted_by": "Parent / Guardian",
-        "membership": [
-          "Free Member"
-        ],
+        "membership": ["Free Member"],
         "hide_till": 0,
         "screened": "Y",
         "hidden": "N",
@@ -202,9 +184,7 @@
         "is_family_gamified": "Y"
       },
       "origin": {
-        "grewup_in": [
-          "India"
-        ],
+        "grewup_in": ["India"],
         "native_place": "",
         "ethnicity": "India"
       },
@@ -298,9 +278,7 @@
         "profile_created": 20200604094957,
         "profile_activated": 20200604101929,
         "posted_by": "Self",
-        "membership": [
-          "Free Member"
-        ],
+        "membership": ["Free Member"],
         "hide_till": 0,
         "screened": "Y",
         "hidden": "N",
@@ -415,9 +393,7 @@
         "is_family_gamified": "Y"
       },
       "origin": {
-        "grewup_in": [
-          "India"
-        ],
+        "grewup_in": ["India"],
         "native_place": "Mangalore",
         "ethnicity": "India"
       },
@@ -494,9 +470,7 @@
         "profile_created": 20230518145053,
         "profile_activated": 20230518150554,
         "posted_by": "Self",
-        "membership": [
-          "Free Member"
-        ],
+        "membership": ["Free Member"],
         "hide_till": 0,
         "screened": "Y",
         "hidden": "N",
@@ -611,9 +585,7 @@
         "is_family_gamified": "Y"
       },
       "origin": {
-        "grewup_in": [
-          "India"
-        ],
+        "grewup_in": ["India"],
         "native_place": "Ramdurg, Karnataka, India",
         "ethnicity": "India"
       },
@@ -690,9 +662,7 @@
         "profile_created": 20240215221552,
         "profile_activated": 20240215223053,
         "posted_by": "Self",
-        "membership": [
-          "Free Member"
-        ],
+        "membership": ["Free Member"],
         "hide_till": 0,
         "screened": "Y",
         "hidden": "N",
@@ -807,9 +777,7 @@
         "is_family_gamified": "Y"
       },
       "origin": {
-        "grewup_in": [
-          "India"
-        ],
+        "grewup_in": ["India"],
         "native_place": "Mysuru, Karnataka, India",
         "ethnicity": "India"
       },
@@ -903,9 +871,7 @@
         "profile_created": 20221114075030,
         "profile_activated": 20221114080601,
         "posted_by": "Sibling",
-        "membership": [
-          "was Gold Plus Member"
-        ],
+        "membership": ["was Gold Plus Member"],
         "hide_till": 0,
         "screened": "Y",
         "hidden": "N",
@@ -1020,9 +986,7 @@
         "is_family_gamified": "Y"
       },
       "origin": {
-        "grewup_in": [
-          "India"
-        ],
+        "grewup_in": ["India"],
         "native_place": "",
         "ethnicity": "India"
       },
@@ -1116,9 +1080,7 @@
         "profile_created": 20250125183031,
         "profile_activated": 20250125184533,
         "posted_by": "Self",
-        "membership": [
-          "Free Member"
-        ],
+        "membership": ["Free Member"],
         "hide_till": 0,
         "screened": "Y",
         "hidden": "N",
@@ -1233,9 +1195,7 @@
         "is_family_gamified": "Y"
       },
       "origin": {
-        "grewup_in": [
-          "India"
-        ],
+        "grewup_in": ["India"],
         "native_place": ", Karnataka, India",
         "ethnicity": "India"
       },
@@ -1312,9 +1272,7 @@
         "profile_created": 20250125183031,
         "profile_activated": 20250125184533,
         "posted_by": "Self",
-        "membership": [
-          "Free Member"
-        ],
+        "membership": ["Free Member"],
         "hide_till": 0,
         "screened": "Y",
         "hidden": "N",
@@ -1429,9 +1387,7 @@
         "is_family_gamified": "Y"
       },
       "origin": {
-        "grewup_in": [
-          "India"
-        ],
+        "grewup_in": ["India"],
         "native_place": ", Karnataka, India",
         "ethnicity": "India"
       },
@@ -1508,9 +1464,7 @@
         "profile_created": 20250125183031,
         "profile_activated": 20250125184533,
         "posted_by": "Self",
-        "membership": [
-          "Free Member"
-        ],
+        "membership": ["Free Member"],
         "hide_till": 0,
         "screened": "Y",
         "hidden": "N",
@@ -1625,9 +1579,7 @@
         "is_family_gamified": "Y"
       },
       "origin": {
-        "grewup_in": [
-          "USA"
-        ],
+        "grewup_in": ["USA"],
         "native_place": "Kerala, India",
         "ethnicity": "India"
       },
@@ -1704,9 +1656,7 @@
         "profile_created": 20250125183031,
         "profile_activated": 20250125184533,
         "posted_by": "Self",
-        "membership": [
-          "Free Member"
-        ],
+        "membership": ["Free Member"],
         "hide_till": 0,
         "screened": "Y",
         "hidden": "N",
@@ -1821,9 +1771,7 @@
         "is_family_gamified": "Y"
       },
       "origin": {
-        "grewup_in": [
-          "India"
-        ],
+        "grewup_in": ["India"],
         "native_place": ", Karnataka, India",
         "ethnicity": "India"
       },
@@ -1939,6 +1887,9 @@
             "medium": "/v1745761578/kr7howdux6kbvsv3fmqz.jpg"
           }
         ]
+      },
+      "connect": {
+        "status": "Connect"
       }
     },
     {
@@ -1987,6 +1938,9 @@
             "medium": "/v1745763709/utumgt0kojmd5a3hrs5f.jpg"
           }
         ]
+      },
+      "connect": {
+        "status": "Connect"
       }
     }
   ]

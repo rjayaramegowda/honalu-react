@@ -20,8 +20,11 @@ const Dashboard = () => {
 
   const resultData = useAppSelector(selectResultData);
   const dataProvider = useAppSelector(selectDashboardData);
-  const listItems = dataProvider.map((vo: Profile) => (
-    <ProfileCard2 vo={vo} key={vo.basic.display_name + vo.basic.username} />
+  const listItems = dataProvider.map((vo: Profile, index) => (
+    <ProfileCard2
+      vo={vo}
+      key={vo.basic.display_name + vo.basic.username + index}
+    />
   ));
 
   function applyFilter() {

@@ -16,7 +16,7 @@ export interface Profile {
   origin?: Origin
   interests_and_more?: InterestsAndMore
   photo_details: PhotoDetails
-  connect?: Connect
+  connect: Connect
   other?: Other
   notifications?: Notifications
   request?: Request
